@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bảng Xếp Hạng Phim - Top 10 Điểm Cao Nhất | PHIMMOI.net</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+
+  <!-- CSS dùng chung -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    /* CSS chuyên biệt cho trang Bảng xếp hạng */
+    .top-hero-banner {
+      background: linear-gradient(135deg, rgba(229, 9, 20, 0.15) 0%, rgba(255, 184, 0, 0.1) 100%), var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      margin-bottom: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .top-tabs-nav {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+
+    .top-tab-btn {
+      padding: 10px 22px;
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      color: var(--text-body);
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all var(--transition-fast);
+    }
+
+    .top-tab-btn:hover {
+      background-color: var(--bg-card-hover);
+      color: var(--primary);
+    }
+
+    .top-tab-btn.is-active {
+      background-color: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary);
+      box-shadow: 0 4px 12px rgba(229, 9, 20, 0.3);
+    }
+
+    /* Phong cách bảng xếp hạng */
+    .rank-cell {
+      font-size: 1.15rem;
+      font-weight: 900;
+      text-align: center;
+      width: 60px;
+    }
+
+    .rank-cell--1 { color: #ffd700; font-size: 1.35rem; }
+    .rank-cell--2 { color: #c0c0c0; font-size: 1.25rem; }
+    .rank-cell--3 { color: #cd7f32; font-size: 1.2rem; }
+
+    .movie-mini-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .movie-mini-poster {
+      width: 44px;
+      height: 62px;
+      object-fit: cover;
+      border-radius: var(--radius-sm);
+    }
+
+    .movie-mini-title {
+      font-weight: 700;
+      color: var(--text-main);
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .movie-mini-title:hover {
+      color: var(--primary);
+    }
+
+    .movie-mini-sub {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .rating-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background-color: rgba(255, 184, 0, 0.15);
+      color: var(--accent);
+      padding: 4px 10px;
+      border-radius: var(--radius-full);
+      font-weight: 800;
+      font-size: 0.95rem;
+    }
+
+    /* Tiêu đề cột có thể sắp xếp (Sortable) */
+    .sortable-th {
+      cursor: pointer;
+      user-select: none;
+      transition: background-color var(--transition-fast);
+    }
+
+    .sortable-th:hover {
+      background-color: var(--bg-card-hover);
+      color: var(--primary);
+    }
+
+    .sort-icon {
+      font-size: 0.75rem;
+      margin-left: 4px;
+      opacity: 0.6;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========================================================================
+       HEADER & THANH ĐIỀU HƯỚNG
+       ======================================================================== -->
+  <header class="site-header">
+    <div class="container">
+      <nav class="navbar" aria-label="Thanh điều hướng chính">
+        <a href="index.html" class="navbar__brand" title="Trang chủ PHIMMOI.net">
+          <img src="images/logo.svg" alt="Logo PHIMMOI.net" class="navbar__logo-img">
+        </a>
+
+        <!-- Đánh dấu class active trên Bảng xếp hạng -->
+        <ul class="navbar__menu">
+          <li><a href="index.html" class="navbar__link">Trang chủ</a></li>
+          <li><a href="danh-sach-phim.html" class="navbar__link">Danh sách phim</a></li>
+          <li><a href="top-phim.html" class="navbar__link active">Bảng xếp hạng</a></li>
+          <li><a href="trac-nghiem.html" class="navbar__link">Trắc nghiệm phim</a></li>
+          <li><a href="lien-he.html" class="navbar__link">Đề xuất phim</a></li>
+        </ul>
+
+        <div class="navbar__actions">
+          <button type="button" class="theme-toggle-btn" aria-label="Chuyển đổi giao diện Sáng / Tối" title="Chuyển chế độ xem">&#9728;</button>
+          
+          <button type="button" class="watchlist-nav-btn" aria-label="Xem danh sách phim đã lưu">
+            <span>🔖</span>
+            <span class="label-text">Xem sau</span>
+            <span class="watchlist-count-badge">0</span>
+          </button>
+
+          <button type="button" class="hamburger-btn" aria-label="Mở menu di động" aria-expanded="false">&#9776;</button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ========================================================================
+       NỘI DUNG CHÍNH (MAIN)
+       ======================================================================== -->
+  <main class="container" style="padding-top: 36px; padding-bottom: 60px;">
+    
+    <!-- Hero Banner giới thiệu bảng xếp hạng -->
+    <section class="top-hero-banner" aria-label="Giới thiệu bảng xếp hạng điện ảnh">
+      <div>
+        <h1 style="font-size: 2.2rem; color: var(--text-main); margin-bottom: 8px;">🏆 Bảng Xếp Hạng Điện Ảnh Đỉnh Cao</h1>
+        <p style="font-size: 1rem; color: var(--text-muted); max-width: 680px;">
+          Tổng hợp Top 10 bộ phim có điểm đánh giá xuất sắc nhất do cộng đồng người xem và giới phê bình bình chọn. Click vào tiêu đề các cột để đảo chiều sắp xếp theo ý bạn!
+        </p>
+      </div>
+      <div style="text-align: right;">
+        <span class="badge-genre" style="font-size: 0.9rem; padding: 6px 14px;">Cập nhật: Mùa phim 2024 - 2026</span>
+      </div>
+    </section>
+
+    <!-- HỆ THỐNG TAB CHUYỂN BẢNG XẾP HẠNG -->
+    <nav class="top-tabs-nav" role="tablist" aria-label="Lựa chọn phân loại bảng xếp hạng">
+      <button type="button" class="top-tab-btn is-active" data-filter="all" role="tab" aria-selected="true">
+        <span>⭐</span> Top Mọi Thời Đại
+      </button>
+      <button type="button" class="top-tab-btn" data-filter="vietnam" role="tab" aria-selected="false">
+        <span>🇻🇳</span> Top Phim Việt Nam
+      </button>
+      <button type="button" class="top-tab-btn" data-filter="international" role="tab" aria-selected="false">
+        <span>🌍</span> Top Phim Quốc Tế
+      </button>
+    </nav>
+
+    <!-- BẢNG DỮ LIỆU ĐÁP ỨNG (RESPONSIVE TABLE CONTAINER) -->
+    <div class="table-responsive">
+      <table class="custom-table" id="topMoviesTable" aria-label="Bảng xếp hạng phim theo điểm số">
+        <caption id="tableCaptionText">Bảng xếp hạng: Top 10 Siêu phẩm điện ảnh mọi thời đại</caption>
+        <thead>
+          <tr>
+            <th scope="col" style="text-align: center; width: 70px;">Hạng</th>
+            <th scope="col" class="sortable-th" data-sort="title">Tên Phim <span class="sort-icon">↕</span></th>
+            <th scope="col" class="sortable-th" data-sort="year" style="width: 100px;">Năm <span class="sort-icon">↕</span></th>
+            <th scope="col" style="width: 130px;">Quốc Gia</th>
+            <th scope="col">Thể Loại</th>
+            <th scope="col" class="sortable-th" data-sort="duration" style="width: 120px;">Thời Lượng <span class="sort-icon">↕</span></th>
+            <th scope="col" class="sortable-th" data-sort="rating" style="width: 120px;">Điểm Số <span class="sort-icon">↕</span></th>
+            <th scope="col" class="sortable-th" data-sort="votes" style="width: 130px;">Lượt Đánh Giá <span class="sort-icon">↕</span></th>
+            <th scope="col" style="text-align: center; width: 110px;">Thao Tác</th>
+          </tr>
+        </thead>
+        <tbody id="topTableBody">
+          <!-- Bơm nội dung bằng JavaScript -->
+        </tbody>
+      </table>
+    </div>
+
+  </main>
+
+  <!-- ========================================================================
+       MODAL: DANH SÁCH "XEM SAU" (DÙNG CHUNG)
+       ======================================================================== -->
+  <div class="modal-backdrop" id="watchlistModal" role="dialog" aria-modal="true" aria-labelledby="watchlistModalTitle">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h3 class="modal-title" id="watchlistModalTitle">🔖 Phim Đã Lưu (Xem Sau)</h3>
+        <button type="button" class="modal-close-btn" aria-label="Đóng cửa sổ">&times;</button>
+      </div>
+      <div class="modal-body">
+        <!-- Render nội dung từ main.js -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn--outline modal-close-btn">Đóng</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Nút cuộn lên đầu trang -->
+  <button type="button" class="scroll-top-btn" aria-label="Cuộn lên đầu trang" title="Lên đầu trang">&#8679;</button>
+
+  <!-- ========================================================================
+       FOOTER (CHÂN TRANG)
+       ======================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="images/logo.svg" alt="PHIMMOI.net" class="footer-brand__logo">
+          <p class="footer-brand__desc">
+            Cổng thông tin điện ảnh độc lập, phi lợi nhuận. Cung cấp dữ liệu, tóm tắt nội dung, phân loại và đánh giá phim khách quan dành cho cộng đồng yêu nghệ thuật thứ bảy tại Việt Nam.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-col__title">Khám Phá</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Trang chủ</a></li>
+            <li><a href="danh-sach-phim.html">Danh sách phim</a></li>
+            <li><a href="top-phim.html">Bảng xếp hạng Top</a></li>
+            <li><a href="trac-nghiem.html">Trắc nghiệm sở thích</a></li>
+            <li><a href="lien-he.html">Đề xuất phim mới</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-col__title">Thể Loại Hot</h4>
+          <ul class="footer-links">
+            <li><a href="danh-sach-phim.html?genre=Hành động">Phim Hành Động</a></li>
+            <li><a href="danh-sach-phim.html?genre=Tâm lý">Phim Tâm Lý Xã Hội</a></li>
+            <li><a href="danh-sach-phim.html?genre=Tình cảm">Phim Tình Cảm Lãng Mạn</a></li>
+            <li><a href="danh-sach-phim.html?genre=Khoa học viễn tưởng">Khoa Học Viễn Tưởng</a></li>
+            <li><a href="danh-sach-phim.html?genre=Hoạt hình">Phim Hoạt Hình Tuyển Chọn</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-col__title">Tuyên Bố Pháp Lý</h4>
+          <div class="footer-disclaimer">
+            <strong>LƯU Ý QUAN TRỌNG:</strong> Website là bài tập lớn học phần Thiết kế Web căn bản. Đây là cổng thông tin tra cứu, <strong>HOÀN TOÀN KHÔNG</strong> lưu trữ, cung cấp link xem trực tiếp hay phát tán phim vi phạm bản quyền.
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 PHIMMOI.net - Bài tập nhóm học phần Thiết kế &amp; Lập trình Web căn bản. Mọi thông tin dùng cho mục đích học tập.</p>
+        <p>Phát triển bằng HTML5, CSS3 và Vanilla JavaScript thuần.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================================================
+       CÁC TỆP JAVASCRIPT
+       ======================================================================== -->
+  <script src="js/movies-data.js"></script>
+  <script src="js/main.js"></script>
+
+  <!-- Script điều khiển bảng xếp hạng -->
+  <script>
+    /**
+     * ========================================================================
+     * XỬ LÝ DỮ LIỆU BẢNG XẾP HẠNG & SẮP XẾP CỘT
+     * ========================================================================
+     */
+    let currentTopCategory = "all"; // 'all' | 'vietnam' | 'international'
+    let currentSortColumn = "rating"; // 'rating' | 'title' | 'year' | 'duration' | 'votes'
+    let isSortAscending = false; // Mặc định giảm dần theo điểm
+
+    document.addEventListener("DOMContentLoaded", function () {
+      initTopTabs();
+      initSortableHeaders();
+      renderTopTable();
+    });
+
+    /**
+     * Khởi tạo chuyển tab bảng xếp hạng
+     */
+    function initTopTabs() {
+      const tabButtons = document.querySelectorAll(".top-tab-btn");
+      tabButtons.forEach(btn => {
+        btn.addEventListener("click", function () {
+          tabButtons.forEach(b => {
+            b.classList.remove("is-active");
+            b.setAttribute("aria-selected", "false");
+          });
+
+          this.classList.add("is-active");
+          this.setAttribute("aria-selected", "true");
+
+          currentTopCategory = this.getAttribute("data-filter");
+          
+          // Cập nhật caption bảng
+          const caption = document.getElementById("tableCaptionText");
+          if (caption) {
+            if (currentTopCategory === "all") caption.textContent = "Bảng xếp hạng: Top 10 Siêu phẩm điện ảnh mọi thời đại";
+            else if (currentTopCategory === "vietnam") caption.textContent = "Bảng xếp hạng: Top Phim Điện Ảnh Việt Nam Xuất Sắc";
+            else if (currentTopCategory === "international") caption.textContent = "Bảng xếp hạng: Top Phim Quốc Tế Kinh Điển";
+          }
+
+          renderTopTable();
+        });
+      });
+    }
+
+    /**
+     * Khởi tạo các tiêu đề cột có thể sắp xếp
+     */
+    function initSortableHeaders() {
+      const headers = document.querySelectorAll(".sortable-th");
+      headers.forEach(th => {
+        th.addEventListener("click", function () {
+          const sortKey = this.getAttribute("data-sort");
+
+          if (currentSortColumn === sortKey) {
+            isSortAscending = !isSortAscending;
+          } else {
+            currentSortColumn = sortKey;
+            isSortAscending = (sortKey === "title"); // Tên xếp A-Z trước, số xếp giảm dần trước
+          }
+
+          // Cập nhật icon mũi tên
+          headers.forEach(h => {
+            const icon = h.querySelector(".sort-icon");
+            if (h === th) {
+              icon.textContent = isSortAscending ? "▲" : "▼";
+            } else {
+              icon.textContent = "↕";
+            }
+          });
+
+          renderTopTable();
+        });
+      });
+    }
+
+    /**
+     * Lọc và sắp xếp dữ liệu cho bảng xếp hạng
+     */
+    function getTopMoviesList() {
+      if (!window.MOVIES_DATABASE) return [];
+
+      let list = [...window.MOVIES_DATABASE];
+
+      // Lọc theo danh mục
+      if (currentTopCategory === "vietnam") {
+        list = list.filter(m => m.country === "Việt Nam");
+      } else if (currentTopCategory === "international") {
+        list = list.filter(m => m.country !== "Việt Nam");
+      }
+
+      // Sắp xếp theo cột
+      list.sort((a, b) => {
+        let valA, valB;
+        if (currentSortColumn === "rating") {
+          valA = a.rating; valB = b.rating;
+        } else if (currentSortColumn === "title") {
+          return isSortAscending 
+            ? a.title.localeCompare(b.title, "vi") 
+            : b.title.localeCompare(a.title, "vi");
+        } else if (currentSortColumn === "year") {
+          valA = a.year; valB = b.year;
+        } else if (currentSortColumn === "duration") {
+          valA = a.duration; valB = b.duration;
+        } else if (currentSortColumn === "votes") {
+          valA = a.voteCount; valB = b.voteCount;
+        }
+
+        if (isSortAscending) {
+          return valA > valB ? 1 : -1;
+        } else {
+          return valA < valB ? 1 : -1;
+        }
+      });
+
+      // Lấy tối đa 10 phim
+      return list.slice(0, 10);
+    }
+
+    /**
+     * Render bảng xếp hạng HTML
+     */
+    function renderTopTable() {
+      const tbody = document.getElementById("topTableBody");
+      if (!tbody) return;
+
+      const topList = getTopMoviesList();
+
+      if (topList.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="9" style="text-align: center; padding: 30px; color: var(--text-muted);">Không có dữ liệu phim</td></tr>`;
+        return;
+      }
+
+      tbody.innerHTML = topList.map((movie, index) => {
+        const rank = index + 1;
+        let rankClass = "";
+        let medal = "";
+        if (rank === 1) { rankClass = "rank-cell--1"; medal = "🥇"; }
+        else if (rank === 2) { rankClass = "rank-cell--2"; medal = "🥈"; }
+        else if (rank === 3) { rankClass = "rank-cell--3"; medal = "🥉"; }
+
+        return `
+          <tr>
+            <td class="rank-cell ${rankClass}">
+              ${medal || rank}
+            </td>
+            <td>
+              <div class="movie-mini-info">
+                <a href="chi-tiet-phim.html?id=${movie.id}">
+                  <img src="${movie.poster}" alt="${movie.title}" class="movie-mini-poster" loading="lazy">
+                </a>
+                <div>
+                  <a href="chi-tiet-phim.html?id=${movie.id}" class="movie-mini-title">${movie.title}</a>
+                  <span class="movie-mini-sub">${movie.originalTitle || movie.title}</span>
+                </div>
+              </div>
+            </td>
+            <td><strong>${movie.year}</strong></td>
+            <td>${movie.country}</td>
+            <td>
+              <span class="badge-genre">${movie.genres.join(', ')}</span>
+            </td>
+            <td>${movie.durationText}</td>
+            <td>
+              <span class="rating-pill">★ ${movie.rating.toFixed(1)}</span>
+            </td>
+            <td>${movie.voteCount.toLocaleString('vi-VN')}</td>
+            <td style="text-align: center;">
+              <a href="chi-tiet-phim.html?id=${movie.id}" class="btn btn--outline-primary btn--sm">Chi tiết</a>
+            </td>
+          </tr>
+        `;
+      }).join("");
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PHIMMOI.net - Cổng Thông Tin & Đánh Giá Phim Điện Ảnh Chuẩn Xác</title>
+  
+  <!-- Favicon chuẩn SVG -->
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+
+  <!-- File CSS dùng chung và CSS chuyên biệt cho Trang chủ -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/home.css">
+</head>
+<body>
+
+  <!-- ========================================================================
+       HEADER & THANH ĐIỀU HƯỚNG CHÍNH (NAVBAR)
+       ======================================================================== -->
+  <header class="site-header">
+    <div class="container">
+      <nav class="navbar" aria-label="Thanh điều hướng chính">
+        <!-- Logo thương hiệu -->
+        <a href="index.html" class="navbar__brand" title="Trang chủ PHIMMOI.net">
+          <img src="images/logo.svg" alt="Logo Cổng thông tin phim PHIMMOI.net" class="navbar__logo-img">
+        </a>
+
+        <!-- Danh sách liên kết trang (Đánh dấu class active trên Trang chủ) -->
+        <ul class="navbar__menu">
+          <li><a href="index.html" class="navbar__link active">Trang chủ</a></li>
+          <li><a href="danh-sach-phim.html" class="navbar__link">Danh sách phim</a></li>
+          <li><a href="top-phim.html" class="navbar__link">Bảng xếp hạng</a></li>
+          <li><a href="trac-nghiem.html" class="navbar__link">Trắc nghiệm phim</a></li>
+          <li><a href="lien-he.html" class="navbar__link">Đề xuất phim</a></li>
+        </ul>
+
+        <!-- Khu vực tiện ích bên phải: Theme toggle, Xem sau, Hamburger di động -->
+        <div class="navbar__actions">
+          <button type="button" class="theme-toggle-btn" aria-label="Chuyển đổi giao diện Sáng / Tối" title="Chuyển chế độ xem">&#9728;</button>
+          
+          <button type="button" class="watchlist-nav-btn" aria-label="Xem danh sách phim đã lưu">
+            <span>🔖</span>
+            <span class="label-text">Xem sau</span>
+            <span class="watchlist-count-badge">0</span>
+          </button>
+
+          <button type="button" class="hamburger-btn" aria-label="Mở menu di động" aria-expanded="false">&#9776;</button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ========================================================================
+       NỘI DUNG CHÍNH (MAIN)
+       ======================================================================== -->
+  <main>
+    <!-- 1. SLIDER PHIM NỔI BẬT (HERO CAROUSEL 5 PHIM) -->
+    <section class="hero-slider-section" aria-label="Slider các phim nổi bật">
+      <div class="hero-slider">
+        
+        <!-- Slide 1: Mai -->
+        <article class="hero-slide is-active">
+          <img src="images/banners/banner-1.svg" alt="Banner phim Mai" class="hero-slide__bg">
+          <div class="hero-slide__overlay"></div>
+          <div class="container">
+            <div class="hero-slide__content">
+              <span class="hero-slide__tag">Phim Chiếu Rạp Nổi Bật</span>
+              <h1 class="hero-slide__title">Mai</h1>
+              <div class="hero-slide__meta">
+                <span class="hero-slide__rating">★ 8.2</span>
+                <span>2024</span>
+                <span>131 phút</span>
+                <span>Tâm lý, Tình cảm</span>
+              </div>
+              <p class="hero-slide__desc">Mai kể về cuộc đời người phụ nữ massage trị liệu ngoài 30 tuổi với những vết hằn quá khứ, khao khát tìm thấy tình yêu chân thành giữa định kiến xã hội khắc nghiệt.</p>
+              <div class="hero-slide__actions">
+                <a href="chi-tiet-phim.html?id=1" class="btn btn--primary btn--lg">Xem Chi Tiết</a>
+                <a href="danh-sach-phim.html" class="btn btn--outline btn--lg">Khám Phá Thêm</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Slide 2: Bố Già -->
+        <article class="hero-slide">
+          <img src="images/banners/banner-2.svg" alt="Banner phim Bố Già" class="hero-slide__bg">
+          <div class="hero-slide__overlay"></div>
+          <div class="container">
+            <div class="hero-slide__content">
+              <span class="hero-slide__tag">Kỷ Lục Doanh Thu</span>
+              <h2 class="hero-slide__title">Bố Già</h2>
+              <div class="hero-slide__meta">
+                <span class="hero-slide__rating">★ 8.1</span>
+                <span>2021</span>
+                <span>128 phút</span>
+                <span>Hài, Gia đình, Tâm lý</span>
+              </div>
+              <p class="hero-slide__desc">Câu chuyện gia đình ấm áp, cảm động tại một con hẻm nghèo Sài Gòn, nơi sự bất đồng thế hệ giữa cha và con trai được hóa giải bằng tình thân thương vô bờ bến.</p>
+              <div class="hero-slide__actions">
+                <a href="chi-tiet-phim.html?id=2" class="btn btn--primary btn--lg">Xem Chi Tiết</a>
+                <a href="danh-sach-phim.html" class="btn btn--outline btn--lg">Khám Phá Thêm</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Slide 3: Hai Phượng -->
+        <article class="hero-slide">
+          <img src="images/banners/banner-3.svg" alt="Banner phim Hai Phượng" class="hero-slide__bg">
+          <div class="hero-slide__overlay"></div>
+          <div class="container">
+            <div class="hero-slide__content">
+              <span class="hero-slide__tag">Hành Động Đỉnh Cao</span>
+              <h2 class="hero-slide__title">Hai Phượng</h2>
+              <div class="hero-slide__meta">
+                <span class="hero-slide__rating">★ 7.9</span>
+                <span>2019</span>
+                <span>98 phút</span>
+                <span>Hành động, Võ thuật</span>
+              </div>
+              <p class="hero-slide__desc">Cuộc rượt đuổi sinh tử không khoan nhượng của người mẹ miền Tây băng qua muôn trùng hiểm nguy để cứu thoát con gái nhỏ khỏi băng nhóm tội phạm bắt cóc.</p>
+              <div class="hero-slide__actions">
+                <a href="chi-tiet-phim.html?id=3" class="btn btn--primary btn--lg">Xem Chi Tiết</a>
+                <a href="danh-sach-phim.html" class="btn btn--outline btn--lg">Khám Phá Thêm</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Slide 4: Mắt Biếc -->
+        <article class="hero-slide">
+          <img src="images/banners/banner-4.svg" alt="Banner phim Mắt Biếc" class="hero-slide__bg">
+          <div class="hero-slide__overlay"></div>
+          <div class="container">
+            <div class="hero-slide__content">
+              <span class="hero-slide__tag">Lãng Mạn Kinh Điển</span>
+              <h2 class="hero-slide__title">Mắt Biếc</h2>
+              <div class="hero-slide__meta">
+                <span class="hero-slide__rating">★ 8.0</span>
+                <span>2019</span>
+                <span>117 phút</span>
+                <span>Tình cảm, Tâm lý</span>
+              </div>
+              <p class="hero-slide__desc">Mối tình đơn phương trong trẻo nhưng đong đầy tiếc nuối của chàng trai làng Đo Đo dành cho cô bạn thanh mai trúc mã sở hữu đôi mắt biếc sâu thẳm.</p>
+              <div class="hero-slide__actions">
+                <a href="chi-tiet-phim.html?id=4" class="btn btn--primary btn--lg">Xem Chi Tiết</a>
+                <a href="danh-sach-phim.html" class="btn btn--outline btn--lg">Khám Phá Thêm</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Slide 5: Tiệc Trăng Máu -->
+        <article class="hero-slide">
+          <img src="images/banners/banner-5.svg" alt="Banner phim Tiệc Trăng Máu" class="hero-slide__bg">
+          <div class="hero-slide__overlay"></div>
+          <div class="container">
+            <div class="hero-slide__content">
+              <span class="hero-slide__tag">Hài Kịch Tâm Lý</span>
+              <h2 class="hero-slide__title">Tiệc Trăng Máu</h2>
+              <div class="hero-slide__meta">
+                <span class="hero-slide__rating">★ 7.8</span>
+                <span>2020</span>
+                <span>118 phút</span>
+                <span>Tâm lý, Hài đen</span>
+              </div>
+              <p class="hero-slide__desc">Trò chơi công khai điện thoại trong đêm nguyệt thực biến bữa tiệc họp mặt của nhóm bạn thân thành chuỗi bóc trần những bí mật dối trá giật gân.</p>
+              <div class="hero-slide__actions">
+                <a href="chi-tiet-phim.html?id=5" class="btn btn--primary btn--lg">Xem Chi Tiết</a>
+                <a href="danh-sach-phim.html" class="btn btn--outline btn--lg">Khám Phá Thêm</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- Mũi tên điều hướng Trước / Sau -->
+      <button type="button" class="slider-arrow slider-arrow--prev" aria-label="Xem slide trước">&#10094;</button>
+      <button type="button" class="slider-arrow slider-arrow--next" aria-label="Xem slide kế tiếp">&#10095;</button>
+
+      <!-- Dấu chấm chỉ báo slide (Indicator Dots) -->
+      <div class="slider-dots" role="tablist" aria-label="Chọn slide">
+        <button type="button" class="slider-dot is-active" aria-label="Slide 1" aria-current="true"></button>
+        <button type="button" class="slider-dot" aria-label="Slide 2"></button>
+        <button type="button" class="slider-dot" aria-label="Slide 3"></button>
+        <button type="button" class="slider-dot" aria-label="Slide 4"></button>
+        <button type="button" class="slider-dot" aria-label="Slide 5"></button>
+      </div>
+    </section>
+
+    <div class="container">
+      <!-- 2. ĐIỂM NHẤN SÁNG TẠO: GỢI Ý PHIM NGẪU NHIÊN CHO TỐI NAY -->
+      <section class="random-suggester-banner" aria-label="Gợi ý phim ngẫu nhiên">
+        <div class="random-suggester__info">
+          <h2><span>✨</span> Bạn chưa biết xem gì tối nay?</h2>
+          <p>Chọn tâm trạng và thời lượng bạn muốn, hệ thống sẽ chọn ngẫu nhiên một siêu phẩm phù hợp nhất dành cho bạn!</p>
+        </div>
+        <div class="random-suggester__controls">
+          <select id="quickMoodSelect" class="mood-select" aria-label="Chọn tâm trạng">
+            <option value="all">🎭 Tâm trạng: Bất kỳ</option>
+            <option value="xúc động">😢 Xúc động &amp; Ý nghĩa</option>
+            <option value="thư giãn">😂 Thư giãn &amp; Hài hước</option>
+            <option value="hồi hộp">⚡ Hồi hộp &amp; Kịch tính</option>
+            <option value="suy ngẫm">🧠 Suy ngẫm sâu sắc</option>
+            <option value="mơ mộng">💖 Mơ mộng lãng mạn</option>
+          </select>
+
+          <select id="quickDurationSelect" class="duration-select" aria-label="Chọn thời lượng phim">
+            <option value="all">⏱️ Thời lượng: Bất kỳ</option>
+            <option value="short">Dưới 120 phút (Phim ngắn gọn)</option>
+            <option value="long">Trên 120 phút (Phim trường thiên)</option>
+          </select>
+
+          <button type="button" id="btnSuggestRandom" class="btn btn--accent">
+            <span>🎲</span> Gợi Ý Ngay
+          </button>
+        </div>
+      </section>
+
+      <!-- 3. BỐ CỤC CHÍNH (PHIM MỚI CẬP NHẬT + ASIDE THỂ LOẠI) -->
+      <div class="home-layout">
+        <!-- Khu vực Phim mới cập nhật -->
+        <section class="latest-movies-section" aria-label="Phim mới cập nhật">
+          <div class="section-title">
+            <h2>Phim Mới Cập Nhật</h2>
+            <a href="danh-sach-phim.html" class="section-title__sub">Xem tất cả &rarr;</a>
+          </div>
+
+          <!-- Lưới 8 phim hiển thị trang chủ -->
+          <div class="movies-grid" id="latestMoviesGrid">
+            <!-- Render tự động từ JS để đảm bảo đồng bộ -->
+          </div>
+
+          <div style="text-align: center; margin-top: 32px;">
+            <a href="danh-sach-phim.html" class="btn btn--outline btn--lg">Xem Toàn Bộ 20 Phim &rarr;</a>
+          </div>
+        </section>
+
+        <!-- Aside: Khám phá Thể loại -->
+        <aside class="genre-list-aside" aria-label="Thể loại phim phổ biến">
+          <h3 style="font-size: 1.2rem; color: var(--text-main); margin-bottom: 6px;">Khám Phá Thể Loại</h3>
+          <p style="font-size: 0.85rem; color: var(--text-muted);">Phân loại chi tiết theo từng gu điện ảnh</p>
+          
+          <div class="genre-badges-grid">
+            <a href="danh-sach-phim.html?genre=Hành động" class="genre-badge-item">Hành động <span class="count">5 phim</span></a>
+            <a href="danh-sach-phim.html?genre=Tâm lý" class="genre-badge-item">Tâm lý <span class="count">8 phim</span></a>
+            <a href="danh-sach-phim.html?genre=Tình cảm" class="genre-badge-item">Tình cảm <span class="count">4 phim</span></a>
+            <a href="danh-sach-phim.html?genre=Hài" class="genre-badge-item">Hài hước <span class="count">3 phim</span></a>
+            <a href="danh-sach-phim.html?genre=Kinh dị" class="genre-badge-item">Kinh dị <span class="count">4 phim</span></a>
+            <a href="danh-sach-phim.html?genre=Khoa học viễn tưởng" class="genre-badge-item">Khoa học VT <span class="count">3 phim</span></a>
+            <a href="danh-sach-phim.html?genre=Hoạt hình" class="genre-badge-item">Hoạt hình <span class="count">4 phim</span></a>
+            <a href="danh-sach-phim.html?genre=Phiêu lưu" class="genre-badge-item">Phiêu lưu <span class="count">3 phim</span></a>
+            <a href="danh-sach-phim.html?genre=Gia đình" class="genre-badge-item">Gia đình <span class="count">3 phim</span></a>
+          </div>
+
+          <!-- Banner mini dẫn vào trắc nghiệm -->
+          <div style="margin-top: 24px; padding: 16px; background: rgba(229, 9, 20, 0.08); border-radius: var(--radius-md); border: 1px dashed var(--primary); text-align: center;">
+            <p style="font-weight: 700; color: var(--text-main); margin-bottom: 6px;">🎯 Thử Trắc Nghiệm Phim</p>
+            <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 12px;">Trả lời 7 câu hỏi để khám phá thể loại phim sinh ra dành cho bạn!</p>
+            <a href="trac-nghiem.html" class="btn btn--primary btn--sm" style="width: 100%;">Làm bài ngay</a>
+          </div>
+        </aside>
+      </div>
+
+      <!-- 4. SECTION BẢNG XẾP HẠNG: TOP 5 TUẦN NÀY -->
+      <section class="top-weekly-section" aria-label="Top 5 phim tuần này">
+        <div class="container">
+          <div class="section-title">
+            <h2>Top 5 Đánh Giá Cao Tuần Này</h2>
+            <a href="top-phim.html" class="section-title__sub">Bảng xếp hạng đầy đủ &rarr;</a>
+          </div>
+          
+          <div class="top-weekly-list" id="topWeeklyContainer">
+            <!-- Render 5 phim điểm cao nhất từ JS -->
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. SECTION SÁNG TẠO: PHIM BẠN VỪA XEM (RECENTLY VIEWED) -->
+      <section class="recently-viewed-section" aria-label="Phim bạn vừa xem gần đây">
+        <div class="section-title">
+          <h2>Phim Bạn Vừa Xem</h2>
+          <span class="section-title__sub">Lịch sử duyệt phim lưu trên thiết bị của bạn</span>
+        </div>
+        <div id="recentlyViewedContainer">
+          <!-- Render danh sách phim vừa xem từ localStorage -->
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- ========================================================================
+       MODAL: GỢI Ý PHIM NGẪU NHIÊN (POPUP CHI TIẾT)
+       ======================================================================== -->
+  <div class="modal-backdrop" id="randomMovieModal" role="dialog" aria-modal="true" aria-labelledby="randomModalTitle">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h3 class="modal-title" id="randomModalTitle">🎬 Gợi Ý Phim Dành Cho Bạn</h3>
+        <button type="button" class="modal-close-btn" aria-label="Đóng cửa sổ">&times;</button>
+      </div>
+      <div class="modal-body" id="randomModalBody">
+        <!-- Nội dung phim ngẫu nhiên được bơm bằng JavaScript -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn--outline modal-close-btn">Đóng</button>
+        <button type="button" id="btnRollAgain" class="btn btn--accent">Chọn Phim Khác 🎲</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       MODAL: DANH SÁCH "XEM SAU" (WATCHLIST POPUP DÙNG CHUNG)
+       ======================================================================== -->
+  <div class="modal-backdrop" id="watchlistModal" role="dialog" aria-modal="true" aria-labelledby="watchlistModalTitle">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h3 class="modal-title" id="watchlistModalTitle">🔖 Phim Đã Lưu (Xem Sau)</h3>
+        <button type="button" class="modal-close-btn" aria-label="Đóng cửa sổ">&times;</button>
+      </div>
+      <div class="modal-body">
+        <!-- Render danh sách phim từ localStorage -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn--outline modal-close-btn">Đóng</button>
+        <a href="danh-sach-phim.html" class="btn btn--primary">Đến trang Phim</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Nút cuộn lên đầu trang -->
+  <button type="button" class="scroll-top-btn" aria-label="Cuộn lên đầu trang" title="Lên đầu trang">&#8679;</button>
+
+  <!-- ========================================================================
+       FOOTER (CHÂN TRANG CHUẨN NGỮ NGHĨA & BẢN QUYỀN)
+       ======================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Cột 1: Thông tin thương hiệu -->
+        <div class="footer-brand">
+          <img src="images/logo.svg" alt="PHIMMOI.net" class="footer-brand__logo">
+          <p class="footer-brand__desc">
+            Cổng thông tin điện ảnh độc lập, phi lợi nhuận. Cung cấp dữ liệu, tóm tắt nội dung, phân loại và đánh giá phim khách quan dành cho cộng đồng yêu nghệ thuật thứ bảy tại Việt Nam.
+          </p>
+        </div>
+
+        <!-- Cột 2: Điều hướng nhanh -->
+        <div class="footer-col">
+          <h4 class="footer-col__title">Khám Phá</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Trang chủ</a></li>
+            <li><a href="danh-sach-phim.html">Danh sách phim</a></li>
+            <li><a href="top-phim.html">Bảng xếp hạng Top</a></li>
+            <li><a href="trac-nghiem.html">Trắc nghiệm sở thích</a></li>
+            <li><a href="lien-he.html">Đề xuất phim mới</a></li>
+          </ul>
+        </div>
+
+        <!-- Cột 3: Thể loại hàng đầu -->
+        <div class="footer-col">
+          <h4 class="footer-col__title">Thể Loại Hot</h4>
+          <ul class="footer-links">
+            <li><a href="danh-sach-phim.html?genre=Hành động">Phim Hành Động</a></li>
+            <li><a href="danh-sach-phim.html?genre=Tâm lý">Phim Tâm Lý Xã Hội</a></li>
+            <li><a href="danh-sach-phim.html?genre=Tình cảm">Phim Tình Cảm Lãng Mạn</a></li>
+            <li><a href="danh-sach-phim.html?genre=Khoa học viễn tưởng">Khoa Học Viễn Tưởng</a></li>
+            <li><a href="danh-sach-phim.html?genre=Hoạt hình">Phim Hoạt Hình Tuyển Chọn</a></li>
+          </ul>
+        </div>
+
+        <!-- Cột 4: Khước từ trách nhiệm bản quyền -->
+        <div class="footer-col">
+          <h4 class="footer-col__title">Tuyên Bố Pháp Lý</h4>
+          <div class="footer-disclaimer">
+            <strong>LƯU Ý QUAN TRỌNG:</strong> Website là bài tập lớn học phần Thiết kế Web căn bản. Đây là cổng thông tin tra cứu, <strong>HOÀN TOÀN KHÔNG</strong> lưu trữ, cung cấp link xem trực tiếp hay phát tán phim vi phạm bản quyền.
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 PHIMMOI.net - Bài tập nhóm học phần Thiết kế &amp; Lập trình Web căn bản. Mọi thông tin dùng cho mục đích học tập.</p>
+        <p>Phát triển bằng HTML5, CSS3 và Vanilla JavaScript thuần.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================================================
+       CÁC TỆP JAVASCRIPT
+       ======================================================================== -->
+  <script src="js/movies-data.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/slider.js"></script>
+
+  <!-- Script riêng cho các khối dữ liệu trên Trang chủ -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      // 1. Render 8 phim mới cập nhật vào lưới
+      const latestGrid = document.getElementById("latestMoviesGrid");
+      if (latestGrid && window.MOVIES_DATABASE) {
+        // Lấy 8 phim đầu tiên
+        const latest8 = window.MOVIES_DATABASE.slice(0, 8);
+        latestGrid.innerHTML = latest8.map(movie => renderMovieCardHTML(movie)).join("");
+      }
+
+      // 2. Render Top 5 phim tuần này
+      const topWeeklyContainer = document.getElementById("topWeeklyContainer");
+      if (topWeeklyContainer && window.MOVIES_DATABASE) {
+        const top5 = [...window.MOVIES_DATABASE]
+          .sort((a, b) => b.rating - a.rating)
+          .slice(0, 5);
+
+        topWeeklyContainer.innerHTML = top5.map((movie, index) => {
+          const rank = index + 1;
+          const rankClass = rank <= 3 ? `top-weekly-card__rank--${rank}` : '';
+          return `
+            <article class="top-weekly-card">
+              <span class="top-weekly-card__rank ${rankClass}">${rank}</span>
+              <a href="chi-tiet-phim.html?id=${movie.id}">
+                <img src="${movie.poster}" alt="${movie.title}" class="top-weekly-card__img" loading="lazy">
+              </a>
+              <div class="top-weekly-card__info">
+                <h4 class="top-weekly-card__title" title="${movie.title}">
+                  <a href="chi-tiet-phim.html?id=${movie.id}">${movie.title}</a>
+                </h4>
+                <div class="top-weekly-card__rating">★ ${movie.rating.toFixed(1)}</div>
+              </div>
+            </article>
+          `;
+        }).join("");
+      }
+
+      // 3. Render danh sách "Phim vừa xem" từ localStorage
+      renderRecentlyViewedSection();
+
+      // 4. Khởi tạo tính năng "Gợi ý phim ngẫu nhiên"
+      initRandomMovieSuggester();
+    });
+
+    /**
+     * Render khu vực Phim vừa xem
+     */
+    function renderRecentlyViewedSection() {
+      const container = document.getElementById("recentlyViewedContainer");
+      if (!container || !window.MOVIES_DATABASE) return;
+
+      const viewedIds = getRecentlyViewed();
+      if (!viewedIds || viewedIds.length === 0) {
+        container.innerHTML = `
+          <div class="recently-viewed-empty">
+            <p>👁️ Bạn chưa xem thông tin phim nào gần đây.</p>
+            <p style="font-size: 0.85rem; margin-top: 4px;">Khi bạn bấm vào xem chi tiết một bộ phim bất kỳ, tác phẩm đó sẽ tự động xuất hiện tại đây để bạn tiện theo dõi lại.</p>
+          </div>
+        `;
+      } else {
+        const viewedMovies = viewedIds
+          .map(id => window.MOVIES_DATABASE.find(m => m.id === id))
+          .filter(Boolean);
+
+        container.innerHTML = `
+          <div class="movies-grid">
+            ${viewedMovies.map(movie => renderMovieCardHTML(movie)).join("")}
+          </div>
+        `;
+      }
+    }
+
+    /**
+     * Khởi tạo bộ chọn gợi ý phim ngẫu nhiên theo tâm trạng & thời lượng
+     */
+    function initRandomMovieSuggester() {
+      const btnSuggest = document.getElementById("btnSuggestRandom");
+      const btnRollAgain = document.getElementById("btnRollAgain");
+      const moodSelect = document.getElementById("quickMoodSelect");
+      const durationSelect = document.getElementById("quickDurationSelect");
+      const modal = document.getElementById("randomMovieModal");
+      const modalBody = document.getElementById("randomModalBody");
+
+      if (!btnSuggest || !modal || !modalBody) return;
+
+      function pickAndShowRandom() {
+        const mood = moodSelect ? moodSelect.value : "all";
+        const duration = durationSelect ? durationSelect.value : "all";
+
+        let filtered = [...window.MOVIES_DATABASE];
+
+        if (mood !== "all") {
+          filtered = filtered.filter(m => m.moods && m.moods.includes(mood));
+        }
+
+        if (duration === "short") {
+          filtered = filtered.filter(m => m.duration <= 120);
+        } else if (duration === "long") {
+          filtered = filtered.filter(m => m.duration > 120);
+        }
+
+        // Nếu lọc quá chặt không có phim, lấy ngẫu nhiên từ toàn bộ DB
+        if (filtered.length === 0) {
+          filtered = window.MOVIES_DATABASE;
+        }
+
+        const randomIndex = Math.floor(Math.random() * filtered.length);
+        const movie = filtered[randomIndex];
+
+        modalBody.innerHTML = `
+          <div style="display: flex; gap: 20px; align-items: flex-start; flex-wrap: wrap;">
+            <img src="${movie.poster}" alt="${movie.title}" style="width: 140px; border-radius: var(--radius-md); box-shadow: var(--shadow-md);">
+            <div style="flex: 1; min-width: 220px;">
+              <span class="badge-genre" style="margin-bottom: 8px;">★ Gợi ý hoàn hảo</span>
+              <h4 style="font-size: 1.4rem; color: var(--text-main); margin-bottom: 4px;">${movie.title}</h4>
+              <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 8px;">${movie.originalTitle} • ${movie.year} • ${movie.durationText}</p>
+              <p style="color: var(--accent); font-weight: 700; font-size: 1rem; margin-bottom: 12px;">★ Điểm: ${movie.rating.toFixed(1)} / 10</p>
+              <p style="color: var(--text-body); font-size: 0.92rem; line-height: 1.5; margin-bottom: 16px;">${movie.synopsis}</p>
+              <div style="display: flex; gap: 10px;">
+                <a href="chi-tiet-phim.html?id=${movie.id}" class="btn btn--primary btn--sm">Xem Chi Tiết Phim Này</a>
+              </div>
+            </div>
+          </div>
+        `;
+
+        modal.classList.add("is-open");
+      }
+
+      btnSuggest.addEventListener("click", pickAndShowRandom);
+      if (btnRollAgain) {
+        btnRollAgain.addEventListener("click", pickAndShowRandom);
+      }
+    }
+  </script>
+</body>
+</html>

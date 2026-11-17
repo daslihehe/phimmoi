@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Đề Xuất Phim Mới & Liên Hệ Đóng Góp Dữ Liệu | PHIMMOI.net</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+
+  <!-- CSS dùng chung -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    /* CSS chuyên biệt cho trang Biểu mẫu đề xuất & Liên hệ */
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr;
+      gap: 36px;
+      margin-top: 24px;
+    }
+
+    .form-card {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 36px;
+      box-shadow: var(--shadow-md);
+    }
+
+    .form-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .form-label {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .form-label .required-mark {
+      color: var(--primary);
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 12px 16px;
+      background-color: var(--bg-input);
+      border: 1.5px solid var(--border-color);
+      border-radius: var(--radius-md);
+      color: var(--text-main);
+      font-size: 0.95rem;
+      transition: all var(--transition-fast);
+    }
+
+    .form-control:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(229, 9, 20, 0.2);
+      outline: none;
+    }
+
+    textarea.form-control {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    /* Trạng thái lỗi và thành công */
+    .form-group.has-error .form-control {
+      border-color: #ef4444;
+      background-color: rgba(239, 68, 68, 0.05);
+    }
+
+    .form-group.has-success .form-control {
+      border-color: #10b981;
+    }
+
+    .form-error-msg {
+      display: none;
+      color: #ef4444;
+      font-size: 0.82rem;
+      font-weight: 600;
+      margin-top: 2px;
+    }
+
+    .form-hint {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* Checkbox tùy chỉnh */
+    .checkbox-label {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.9rem;
+      color: var(--text-body);
+      cursor: pointer;
+      line-height: 1.5;
+    }
+
+    .checkbox-label input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      accent-color: var(--primary);
+      margin-top: 2px;
+      cursor: pointer;
+    }
+
+    /* Banner thông báo thành công */
+    .success-alert-banner {
+      display: none;
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(16, 185, 129, 0.05));
+      border: 1.5px solid #10b981;
+      border-radius: var(--radius-md);
+      padding: 24px;
+      margin-bottom: 28px;
+      text-align: center;
+    }
+
+    .success-alert-banner h3 {
+      color: #10b981;
+      font-size: 1.4rem;
+      margin-bottom: 8px;
+    }
+
+    .success-alert-banner p {
+      color: var(--text-body);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    /* Cột thông tin bên cạnh */
+    .contact-info-card {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      height: fit-content;
+    }
+
+    .process-step {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .process-step-num {
+      width: 38px;
+      height: 38px;
+      border-radius: var(--radius-full);
+      background-color: var(--primary);
+      color: #ffffff;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .process-step-content h4 {
+      font-size: 1.05rem;
+      color: var(--text-main);
+      margin-bottom: 4px;
+    }
+
+    .process-step-content p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    @media (max-width: 900px) {
+      .contact-layout {
+        grid-template-columns: 1fr;
+      }
+      .form-grid-2 {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+      .form-card {
+        padding: 24px 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========================================================================
+       HEADER & THANH ĐIỀU HƯỚNG
+       ======================================================================== -->
+  <header class="site-header">
+    <div class="container">
+      <nav class="navbar" aria-label="Thanh điều hướng chính">
+        <a href="index.html" class="navbar__brand" title="Trang chủ PHIMMOI.net">
+          <img src="images/logo.svg" alt="Logo PHIMMOI.net" class="navbar__logo-img">
+        </a>
+
+        <!-- Đánh dấu active trên Đề xuất phim -->
+        <ul class="navbar__menu">
+          <li><a href="index.html" class="navbar__link">Trang chủ</a></li>
+          <li><a href="danh-sach-phim.html" class="navbar__link">Danh sách phim</a></li>
+          <li><a href="top-phim.html" class="navbar__link">Bảng xếp hạng</a></li>
+          <li><a href="trac-nghiem.html" class="navbar__link">Trắc nghiệm phim</a></li>
+          <li><a href="lien-he.html" class="navbar__link active">Đề xuất phim</a></li>
+        </ul>
+
+        <div class="navbar__actions">
+          <button type="button" class="theme-toggle-btn" aria-label="Chuyển đổi giao diện Sáng / Tối" title="Chuyển chế độ xem">&#9728;</button>
+          
+          <button type="button" class="watchlist-nav-btn" aria-label="Xem danh sách phim đã lưu">
+            <span>🔖</span>
+            <span class="label-text">Xem sau</span>
+            <span class="watchlist-count-badge">0</span>
+          </button>
+
+          <button type="button" class="hamburger-btn" aria-label="Mở menu di động" aria-expanded="false">&#9776;</button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ========================================================================
+       NỘI DUNG CHÍNH (MAIN)
+       ======================================================================== -->
+  <main class="container" style="padding-top: 36px; padding-bottom: 60px;">
+    
+    <div class="section-title">
+      <h1>Gửi Đề Xuất Phim &amp; Đóng Góp Dữ Liệu</h1>
+      <span class="section-title__sub">Cùng nhau xây dựng thư viện thông tin điện ảnh hoàn thiện nhất</span>
+    </div>
+
+    <!-- BANNER BÁO THÀNH CÔNG KHI FORM HỢP LỆ -->
+    <div class="success-alert-banner" id="formSuccessBanner" role="alert" aria-live="polite">
+      <span style="font-size: 3rem; display: block; margin-bottom: 8px;">🎉✅</span>
+      <h3>Gửi Đề Xuất Phim Thành Công!</h3>
+      <p>
+        Cảm ơn bạn đã đóng góp thông tin cho <strong>PHIMMOI.net</strong>. Ban biên tập đã nhận được thông tin và sẽ tiến hành xác minh dữ liệu, chuẩn hóa thông số trước khi cập nhật bộ phim lên hệ thống trong 24 giờ tới!
+      </p>
+    </div>
+
+    <div class="contact-layout">
+      
+      <!-- CỘT TRÁI: BIỂU MẪU ĐỀ XUẤT (FORM) -->
+      <section class="form-card" aria-label="Biểu mẫu thông tin đề xuất phim">
+        <h2 style="font-size: 1.4rem; color: var(--text-main); margin-bottom: 8px;">Thông Tin Phim Cần Bổ Sung</h2>
+        <p style="font-size: 0.92rem; color: var(--text-muted); margin-bottom: 24px;">
+          Các trường có dấu <span style="color: var(--primary);">*</span> là thông tin bắt buộc phải nhập.
+        </p>
+
+        <form id="movieSuggestForm" novalidate>
+          
+          <!-- Hàng 1: Họ tên & Email -->
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label for="senderName" class="form-label">Họ và tên của bạn <span class="required-mark">*</span></label>
+              <input type="text" id="senderName" class="form-control" placeholder="Ví dụ: Nguyễn Văn An" required>
+              <span class="form-error-msg"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="senderEmail" class="form-label">Địa chỉ Email <span class="required-mark">*</span></label>
+              <input type="email" id="senderEmail" class="form-control" placeholder="ban@example.com" required>
+              <span class="form-error-msg"></span>
+            </div>
+          </div>
+
+          <!-- Hàng 2: Số điện thoại & Tên phim đề xuất -->
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label for="senderPhone" class="form-label">Số điện thoại liên hệ <span class="required-mark">*</span></label>
+              <input type="tel" id="senderPhone" class="form-control" placeholder="Ví dụ: 0912345678" required>
+              <span class="form-hint">Số di động 10 chữ số tại Việt Nam</span>
+              <span class="form-error-msg"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="suggestMovieName" class="form-label">Tên bộ phim đề xuất <span class="required-mark">*</span></label>
+              <input type="text" id="suggestMovieName" class="form-control" placeholder="Ví dụ: Oppenheimer (2023)" required>
+              <span class="form-error-msg"></span>
+            </div>
+          </div>
+
+          <!-- Hàng 3: Thể loại chính -->
+          <div class="form-group">
+            <label for="suggestGenre" class="form-label">Thể loại chính của phim <span class="required-mark">*</span></label>
+            <select id="suggestGenre" class="form-control" required>
+              <option value="none">-- Chọn thể loại phù hợp --</option>
+              <option value="Hành động">Hành động / Phiêu lưu</option>
+              <option value="Tâm lý">Tâm lý / Chính kịch</option>
+              <option value="Tình cảm">Tình cảm / Lãng mạn</option>
+              <option value="Hài">Hài hước</option>
+              <option value="Kinh dị">Kinh dị / Rùng rợn</option>
+              <option value="Khoa học viễn tưởng">Khoa học viễn tưởng</option>
+              <option value="Hoạt hình">Hoạt hình / Anime</option>
+              <option value="Gia đình">Gia đình / Tuổi thơ</option>
+              <option value="Khác">Thể loại khác</option>
+            </select>
+            <span class="form-error-msg"></span>
+          </div>
+
+          <!-- Hàng 4: Nội dung mô tả / Lý do -->
+          <div class="form-group">
+            <label for="suggestMessage" class="form-label">Lý do đề xuất &amp; Tóm lược nội dung phim <span class="required-mark">*</span></label>
+            <textarea id="suggestMessage" class="form-control" placeholder="Hãy viết vài dòng giới thiệu về đạo diễn, dàn diễn viên hoặc cảm nhận của bạn vì sao bộ phim này xứng đáng có mặt trên PHIMMOI.net..." required></textarea>
+            <div class="form-hint">
+              <span>Chia sẻ bằng lời văn của bạn</span>
+              <span id="charCounter">0 ký tự (tối thiểu 20)</span>
+            </div>
+            <span class="form-error-msg"></span>
+          </div>
+
+          <!-- Hàng 5: Đồng ý điều khoản -->
+          <div class="form-group" style="margin-top: 10px;">
+            <label class="checkbox-label" for="agreeTerms">
+              <input type="checkbox" id="agreeTerms" required>
+              <span>Tôi cam kết thông tin phim đề xuất là chính xác, không vi phạm thuần phong mỹ tục và tuân thủ các quy định về quyền tác giả của cộng đồng điện ảnh. <span class="required-mark">*</span></span>
+            </label>
+            <span class="form-error-msg"></span>
+          </div>
+
+          <!-- Nút hành động -->
+          <div style="display: flex; gap: 14px; margin-top: 28px; flex-wrap: wrap;">
+            <button type="submit" class="btn btn--primary btn--lg">
+              <span>📤</span> Gửi Đề Xuất Phim
+            </button>
+            <button type="reset" class="btn btn--outline btn--lg">
+              <span>🔄</span> Nhập Lại Form
+            </button>
+          </div>
+
+        </form>
+      </section>
+
+      <!-- CỘT PHẢI: QUY TRÌNH THẨM ĐỊNH & LIÊN HỆ BAN BIÊN TẬP -->
+      <aside class="contact-info-card" aria-label="Quy trình xử lý đóng góp">
+        <h3 style="font-size: 1.3rem; color: var(--text-main); margin-bottom: 12px;">Quy Trình Biên Tập Dữ Liệu</h3>
+        <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 24px;">
+          Để đảm bảo tính chuẩn xác và phong cách viết đồng bộ, mọi đóng góp của người xem đều trải qua 4 bước:
+        </p>
+
+        <!-- Bước 1 -->
+        <div class="process-step">
+          <div class="process-step-num">1</div>
+          <div class="process-step-content">
+            <h4>Tiếp Nhận Đề Xuất</h4>
+            <p>Hệ thống ghi nhận thông tin đóng góp từ biểu mẫu và tự động gửi thông báo kiểm duyệt.</p>
+          </div>
+        </div>
+
+        <!-- Bước 2 -->
+        <div class="process-step">
+          <div class="process-step-num">2</div>
+          <div class="process-step-content">
+            <h4>Kiểm Chứng Thông Tin</h4>
+            <p>Đối chiếu tên phim, năm phát hành, đạo diễn, dàn diễn viên chính với cơ sở dữ liệu chính thống.</p>
+          </div>
+        </div>
+
+        <!-- Bước 3 -->
+        <div class="process-step">
+          <div class="process-step-num">3</div>
+          <div class="process-step-content">
+            <h4>Biên Soạn Tóm Tắt</h4>
+            <p>Viết lại bản tóm lược kịch bản súc tích bằng tiếng Việt, thiết kế poster SVG định dạng chuẩn.</p>
+          </div>
+        </div>
+
+        <!-- Bước 4 -->
+        <div class="process-step">
+          <div class="process-step-num">4</div>
+          <div class="process-step-content">
+            <h4>Xuất Bản Lên Cổng Phim</h4>
+            <p>Tác phẩm chính thức xuất hiện trên kho phim và sẵn sàng để độc giả chấm sao đánh giá.</p>
+          </div>
+        </div>
+
+        <!-- Hộp liên hệ hỗ trợ trực tiếp -->
+        <div style="background-color: var(--bg-secondary); border-radius: var(--radius-md); padding: 20px; border: 1px solid var(--border-color); margin-top: 10px;">
+          <h4 style="font-size: 1rem; color: var(--text-main); margin-bottom: 6px;">📧 Hỗ Trợ Đồ Án Nhóm</h4>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 4px;">Email: <strong>lienhe@phimmoi.net</strong></p>
+          <p style="font-size: 0.85rem; color: var(--text-muted);">Phòng LAB Công Nghệ Phần Mềm</p>
+        </div>
+      </aside>
+
+    </div>
+
+  </main>
+
+  <!-- ========================================================================
+       MODAL: DANH SÁCH "XEM SAU" (DÙNG CHUNG)
+       ======================================================================== -->
+  <div class="modal-backdrop" id="watchlistModal" role="dialog" aria-modal="true" aria-labelledby="watchlistModalTitle">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h3 class="modal-title" id="watchlistModalTitle">🔖 Phim Đã Lưu (Xem Sau)</h3>
+        <button type="button" class="modal-close-btn" aria-label="Đóng cửa sổ">&times;</button>
+      </div>
+      <div class="modal-body">
+        <!-- Render nội dung từ main.js -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn--outline modal-close-btn">Đóng</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Nút cuộn lên đầu trang -->
+  <button type="button" class="scroll-top-btn" aria-label="Cuộn lên đầu trang" title="Lên đầu trang">&#8679;</button>
+
+  <!-- ========================================================================
+       FOOTER (CHÂN TRANG)
+       ======================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="images/logo.svg" alt="PHIMMOI.net" class="footer-brand__logo">
+          <p class="footer-brand__desc">
+            Cổng thông tin điện ảnh độc lập, phi lợi nhuận. Cung cấp dữ liệu, tóm tắt nội dung, phân loại và đánh giá phim khách quan dành cho cộng đồng yêu nghệ thuật thứ bảy tại Việt Nam.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-col__title">Khám Phá</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Trang chủ</a></li>
+            <li><a href="danh-sach-phim.html">Danh sách phim</a></li>
+            <li><a href="top-phim.html">Bảng xếp hạng Top</a></li>
+            <li><a href="trac-nghiem.html">Trắc nghiệm sở thích</a></li>
+            <li><a href="lien-he.html">Đề xuất phim mới</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-col__title">Thể Loại Hot</h4>
+          <ul class="footer-links">
+            <li><a href="danh-sach-phim.html?genre=Hành động">Phim Hành Động</a></li>
+            <li><a href="danh-sach-phim.html?genre=Tâm lý">Phim Tâm Lý Xã Hội</a></li>
+            <li><a href="danh-sach-phim.html?genre=Tình cảm">Phim Tình Cảm Lãng Mạn</a></li>
+            <li><a href="danh-sach-phim.html?genre=Khoa học viễn tưởng">Khoa Học Viễn Tưởng</a></li>
+            <li><a href="danh-sach-phim.html?genre=Hoạt hình">Phim Hoạt Hình Tuyển Chọn</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-col__title">Tuyên Bố Pháp Lý</h4>
+          <div class="footer-disclaimer">
+            <strong>LƯU Ý QUAN TRỌNG:</strong> Website là bài tập lớn học phần Thiết kế Web căn bản. Đây là cổng thông tin tra cứu, <strong>HOÀN TOÀN KHÔNG</strong> lưu trữ, cung cấp link xem trực tiếp hay phát tán phim vi phạm bản quyền.
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 PHIMMOI.net - Bài tập nhóm học phần Thiết kế &amp; Lập trình Web căn bản. Mọi thông tin dùng cho mục đích học tập.</p>
+        <p>Phát triển bằng HTML5, CSS3 và Vanilla JavaScript thuần.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================================================
+       CÁC TỆP JAVASCRIPT
+       ======================================================================== -->
+  <script src="js/movies-data.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/form-validate.js"></script>
+</body>
+</html>

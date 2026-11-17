@@ -1,0 +1,437 @@
+/**
+ * ==============================================================================
+ * DỰ ÁN CỔNG THÔNG TIN ĐIỆN ẢNH - PHIMMOI.NET
+ * File: css/home.css
+ * Mô tả: Toàn bộ CSS chuyên biệt cho Trang chủ (index.html):
+ *        - Slider phim nổi bật (Hero Slider) & Dots navigation
+ *        - Khối "Gợi ý phim ngẫu nhiên tối nay" (Điểm nhấn sáng tạo)
+ *        - Lưới phim mới cập nhật & Khu vực Thể loại (Aside/Section)
+ *        - Bảng xếp hạng "Top 5 tuần này"
+ *        - Thanh "Phim vừa xem" (Recently viewed)
+ * ==============================================================================
+ */
+
+/* ==========================================================================
+   1. HERO SLIDER (CAROUSEL PHIM NỔI BẬT)
+   ========================================================================== */
+.hero-slider-section {
+  position: relative;
+  width: 100%;
+  margin-bottom: 40px;
+  overflow: hidden;
+  background-color: #050608;
+}
+
+.hero-slider {
+  position: relative;
+  width: 100%;
+  height: 480px;
+}
+
+.hero-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--transition-slow), visibility var(--transition-slow);
+  display: flex;
+  align-items: center;
+}
+
+.hero-slide.is-active {
+  opacity: 1;
+  visibility: visible;
+  z-index: 2;
+}
+
+.hero-slide__bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.hero-slide__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(11, 12, 16, 0.95) 0%, rgba(11, 12, 16, 0.7) 45%, rgba(11, 12, 16, 0.2) 100%);
+  z-index: 2;
+}
+
+.hero-slide__content {
+  position: relative;
+  z-index: 3;
+  max-width: 650px;
+  padding: 40px 20px;
+  transform: translateY(20px);
+  transition: transform 0.6s ease;
+}
+
+.hero-slide.is-active .hero-slide__content {
+  transform: translateY(0);
+}
+
+.hero-slide__tag {
+  display: inline-block;
+  padding: 6px 14px;
+  background-color: var(--primary);
+  color: #ffffff;
+  font-size: 0.8rem;
+  font-weight: 700;
+  border-radius: var(--radius-sm);
+  text-transform: uppercase;
+  margin-bottom: 14px;
+  letter-spacing: 1px;
+}
+
+.hero-slide__title {
+  font-size: 2.8rem;
+  font-weight: 900;
+  color: #ffffff;
+  line-height: 1.15;
+  margin-bottom: 10px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+}
+
+.hero-slide__meta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+  font-size: 0.95rem;
+  color: #e5e7eb;
+}
+
+.hero-slide__rating {
+  background-color: var(--accent);
+  color: #121212;
+  font-weight: 800;
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+}
+
+.hero-slide__desc {
+  font-size: 1rem;
+  color: #d1d5db;
+  line-height: 1.6;
+  margin-bottom: 24px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.hero-slide__actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+/* Nút điều hướng Slider (Prev / Next) */
+.slider-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  background-color: rgba(11, 12, 16, 0.6);
+  color: #ffffff;
+  border: 1px solid var(--border-color);
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.slider-arrow:hover {
+  background-color: var(--primary);
+  border-color: var(--primary);
+}
+
+.slider-arrow--prev {
+  left: 20px;
+}
+
+.slider-arrow--next {
+  right: 20px;
+}
+
+/* Chấm điều hướng (Dots indicator) */
+.slider-dots {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 10;
+}
+
+.slider-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: var(--radius-full);
+  background-color: rgba(255, 255, 255, 0.4);
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+}
+
+.slider-dot.is-active {
+  width: 32px;
+  background-color: var(--primary);
+  border-radius: var(--radius-sm);
+}
+
+/* ==========================================================================
+   2. KHỐI TÍNH NĂNG ĐIỂM NHẤN: GỢI Ý PHIM NGẪU NHIÊN CHO TỐI NAY
+   ========================================================================== */
+.random-suggester-banner {
+  background: linear-gradient(135deg, #1f1224 0%, #171822 50%, #201314 100%);
+  border: 1px solid rgba(229, 9, 20, 0.3);
+  border-radius: var(--radius-lg);
+  padding: 30px;
+  margin-bottom: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  box-shadow: var(--shadow-md);
+  position: relative;
+  overflow: hidden;
+}
+
+body.light-mode .random-suggester-banner {
+  background: linear-gradient(135deg, #fff1f2 0%, #ffffff 50%, #fef3c7 100%);
+  border-color: #fecdd3;
+}
+
+.random-suggester-banner::before {
+  content: "🎬";
+  position: absolute;
+  right: 20px;
+  bottom: -15px;
+  font-size: 7rem;
+  opacity: 0.08;
+  pointer-events: none;
+}
+
+.random-suggester__info h2 {
+  font-size: 1.5rem;
+  margin-bottom: 8px;
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.random-suggester__info p {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+.random-suggester__controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.mood-select, .duration-select {
+  padding: 10px 14px;
+  background-color: var(--bg-card);
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+/* ==========================================================================
+   3. BỐ CỤC CHÍNH (MAIN CONTENT + ASIDE THỂ LOẠI)
+   ========================================================================== */
+.home-layout {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 36px;
+  margin-bottom: 50px;
+}
+
+.genre-list-aside {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  position: sticky;
+  top: 90px;
+}
+
+.genre-badges-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.genre-badge-item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 14px;
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-body);
+  transition: all var(--transition-fast);
+  flex: 1 1 calc(50% - 10px);
+}
+
+.genre-badge-item:hover {
+  background-color: var(--primary);
+  color: #ffffff;
+  border-color: var(--primary);
+  transform: translateY(-2px);
+}
+
+.genre-badge-item span.count {
+  font-size: 0.75rem;
+  opacity: 0.75;
+}
+
+/* ==========================================================================
+   4. SECTION TOP 5 TUẦN NÀY (BẢNG XẾP HẠNG NGẮN)
+   ========================================================================== */
+.top-weekly-section {
+  margin-bottom: 50px;
+  background-color: var(--bg-secondary);
+  padding: 36px 0;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-color);
+}
+
+.top-weekly-list {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 18px;
+}
+
+.top-weekly-card {
+  position: relative;
+  background-color: var(--bg-card);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  transition: transform var(--transition-normal);
+}
+
+.top-weekly-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--accent);
+}
+
+.top-weekly-card__rank {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  width: 34px;
+  height: 34px;
+  border-radius: var(--radius-full);
+  background-color: var(--accent);
+  color: #121212;
+  font-weight: 900;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+  box-shadow: var(--shadow-sm);
+}
+
+.top-weekly-card__rank--1 { background-color: #ffd700; color: #000; }
+.top-weekly-card__rank--2 { background-color: #c0c0c0; color: #000; }
+.top-weekly-card__rank--3 { background-color: #cd7f32; color: #000; }
+
+.top-weekly-card__img {
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+}
+
+.top-weekly-card__info {
+  padding: 10px;
+  text-align: center;
+}
+
+.top-weekly-card__title {
+  font-size: 0.9rem;
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--text-main);
+}
+
+.top-weekly-card__rating {
+  font-size: 0.8rem;
+  color: var(--accent);
+  font-weight: 700;
+  margin-top: 4px;
+}
+
+/* ==========================================================================
+   5. THANH "PHIM VỪA XEM" (RECENTLY VIEWED)
+   ========================================================================== */
+.recently-viewed-section {
+  margin-bottom: 50px;
+}
+
+.recently-viewed-empty {
+  background-color: var(--bg-card);
+  border: 1px dashed var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+/* Responsive cho Trang chủ */
+@media (max-width: 1024px) {
+  .hero-slider { height: 420px; }
+  .hero-slide__title { font-size: 2.2rem; }
+  .home-layout { grid-template-columns: 1fr; }
+  .genre-list-aside { position: static; }
+  .top-weekly-list { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .hero-slider { height: 380px; }
+  .hero-slide__title { font-size: 1.8rem; }
+  .hero-slide__desc { display: none; }
+  .random-suggester-banner {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .top-weekly-list { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 480px) {
+  .hero-slider { height: 340px; }
+  .slider-arrow { width: 36px; height: 36px; font-size: 1.1rem; }
+  .top-weekly-list { grid-template-columns: repeat(2, 1fr); }
+}

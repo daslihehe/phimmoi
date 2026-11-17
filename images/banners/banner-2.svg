@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 500" width="1200" height="500">
+  <defs>
+    <linearGradient id="bgBGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b2f2f"/>
+      <stop offset="50%" stop-color="#8b4513"/>
+      <stop offset="100%" stop-color="#1c140e"/>
+    </linearGradient>
+    <linearGradient id="fadeLeft" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0b0c10" stop-opacity="0.95"/>
+      <stop offset="50%" stop-color="#0b0c10" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#0b0c10" stop-opacity="0.2"/>
+    </linearGradient>
+    <filter id="bShadow">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#000000" flood-opacity="0.8"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="500" fill="url(#bgBGrad)"/>
+
+  <!-- Abstract visual artwork on right side -->
+  <g transform="translate(850, 250)" opacity="0.25">
+    <circle cx="0" cy="0" r="220" fill="none" stroke="#FFFFFF" stroke-width="3"/>
+    <circle cx="0" cy="0" r="160" fill="none" stroke="#FFD700" stroke-width="2" stroke-dasharray="10 8"/>
+    <circle cx="0" cy="0" r="90" fill="none" stroke="#FFFFFF" stroke-width="2"/>
+    <polygon points="-40,-50 60,0 -40,50" fill="#FFFFFF" opacity="0.5"/>
+  </g>
+
+  <!-- Left Dark Gradient for text readability -->
+  <rect width="1200" height="500" fill="url(#fadeLeft)"/>
+
+  <!-- Info block -->
+  <g transform="translate(80, 80)" filter="url(#bShadow)">
+    <rect x="0" y="0" width="130" height="30" rx="6" fill="#E50914"/>
+    <text x="65" y="20" font-family="'Segoe UI', Roboto, sans-serif" font-weight="700" font-size="12" fill="#FFFFFF" text-anchor="middle">★ GIA ĐÌNH</text>
+
+    <text x="0" y="90" font-family="'Segoe UI', Roboto, sans-serif" font-weight="900" font-size="52" fill="#FFFFFF">Bố Già</text>
+    <text x="0" y="130" font-family="'Segoe UI', Roboto, sans-serif" font-weight="600" font-size="24" fill="#FFD700">The Old Father</text>
+
+    <g transform="translate(0, 160)">
+      <rect x="0" y="0" width="65" height="26" rx="4" fill="#FFD700"/>
+      <text x="32" y="18" font-family="'Segoe UI', Roboto, sans-serif" font-weight="900" font-size="13" fill="#121212" text-anchor="middle">★ 8.1</text>
+      
+      <text x="80" y="18" font-family="'Segoe UI', Roboto, sans-serif" font-weight="500" font-size="15" fill="#E0E0E0">• 2021 • Hài, Gia đình</text>
+    </g>
+
+    <text x="0" y="225" font-family="'Segoe UI', Roboto, sans-serif" font-weight="400" font-size="16" fill="#CCCCCC">Khám phá chi tiết tác phẩm, diễn viên, đạo diễn và góc nhìn phân tích tại PHIMMOI.NET</text>
+  </g>
+</svg>

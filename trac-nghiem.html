@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trắc Nghiệm Phim - Khám Phá Gu Điện Ảnh Cá Nhân | PHIMMOI.net</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+
+  <!-- CSS dùng chung và CSS chuyên biệt cho Quiz -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/quiz.css">
+</head>
+<body>
+
+  <!-- ========================================================================
+       HEADER & THANH ĐIỀU HƯỚNG
+       ======================================================================== -->
+  <header class="site-header">
+    <div class="container">
+      <nav class="navbar" aria-label="Thanh điều hướng chính">
+        <a href="index.html" class="navbar__brand" title="Trang chủ PHIMMOI.net">
+          <img src="images/logo.svg" alt="Logo PHIMMOI.net" class="navbar__logo-img">
+        </a>
+
+        <!-- Đánh dấu active trên Trắc nghiệm phim -->
+        <ul class="navbar__menu">
+          <li><a href="index.html" class="navbar__link">Trang chủ</a></li>
+          <li><a href="danh-sach-phim.html" class="navbar__link">Danh sách phim</a></li>
+          <li><a href="top-phim.html" class="navbar__link">Bảng xếp hạng</a></li>
+          <li><a href="trac-nghiem.html" class="navbar__link active">Trắc nghiệm phim</a></li>
+          <li><a href="lien-he.html" class="navbar__link">Đề xuất phim</a></li>
+        </ul>
+
+        <div class="navbar__actions">
+          <button type="button" class="theme-toggle-btn" aria-label="Chuyển đổi giao diện Sáng / Tối" title="Chuyển chế độ xem">&#9728;</button>
+          
+          <button type="button" class="watchlist-nav-btn" aria-label="Xem danh sách phim đã lưu">
+            <span>🔖</span>
+            <span class="label-text">Xem sau</span>
+            <span class="watchlist-count-badge">0</span>
+          </button>
+
+          <button type="button" class="hamburger-btn" aria-label="Mở menu di động" aria-expanded="false">&#9776;</button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ========================================================================
+       NỘI DUNG CHÍNH (MAIN)
+       ======================================================================== -->
+  <main class="container quiz-wrapper" style="padding-top: 40px; padding-bottom: 60px;">
+    
+    <!-- Vùng chứa toàn bộ ứng dụng trắc nghiệm (render qua js/quiz.js) -->
+    <div id="quizAppContainer">
+      <div style="text-align: center; padding: 60px 20px; color: var(--text-muted);">
+        <p style="font-size: 2rem; margin-bottom: 12px;">⏳</p>
+        <p>Đang tải bài trắc nghiệm điện ảnh...</p>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ========================================================================
+       MODAL: DANH SÁCH "XEM SAU" (DÙNG CHUNG)
+       ======================================================================== -->
+  <div class="modal-backdrop" id="watchlistModal" role="dialog" aria-modal="true" aria-labelledby="watchlistModalTitle">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h3 class="modal-title" id="watchlistModalTitle">🔖 Phim Đã Lưu (Xem Sau)</h3>
+        <button type="button" class="modal-close-btn" aria-label="Đóng cửa sổ">&times;</button>
+      </div>
+      <div class="modal-body">
+        <!-- Render nội dung từ main.js -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn--outline modal-close-btn">Đóng</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Nút cuộn lên đầu trang -->
+  <button type="button" class="scroll-top-btn" aria-label="Cuộn lên đầu trang" title="Lên đầu trang">&#8679;</button>
+
+  <!-- ========================================================================
+       FOOTER (CHÂN TRANG)
+       ======================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="images/logo.svg" alt="PHIMMOI.net" class="footer-brand__logo">
+          <p class="footer-brand__desc">
+            Cổng thông tin điện ảnh độc lập, phi lợi nhuận. Cung cấp dữ liệu, tóm tắt nội dung, phân loại và đánh giá phim khách quan dành cho cộng đồng yêu nghệ thuật thứ bảy tại Việt Nam.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-col__title">Khám Phá</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Trang chủ</a></li>
+            <li><a href="danh-sach-phim.html">Danh sách phim</a></li>
+            <li><a href="top-phim.html">Bảng xếp hạng Top</a></li>
+            <li><a href="trac-nghiem.html">Trắc nghiệm sở thích</a></li>
+            <li><a href="lien-he.html">Đề xuất phim mới</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-col__title">Thể Loại Hot</h4>
+          <ul class="footer-links">
+            <li><a href="danh-sach-phim.html?genre=Hành động">Phim Hành Động</a></li>
+            <li><a href="danh-sach-phim.html?genre=Tâm lý">Phim Tâm Lý Xã Hội</a></li>
+            <li><a href="danh-sach-phim.html?genre=Tình cảm">Phim Tình Cảm Lãng Mạn</a></li>
+            <li><a href="danh-sach-phim.html?genre=Khoa học viễn tưởng">Khoa Học Viễn Tưởng</a></li>
+            <li><a href="danh-sach-phim.html?genre=Hoạt hình">Phim Hoạt Hình Tuyển Chọn</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-col__title">Tuyên Bố Pháp Lý</h4>
+          <div class="footer-disclaimer">
+            <strong>LƯU Ý QUAN TRỌNG:</strong> Website là bài tập lớn học phần Thiết kế Web căn bản. Đây là cổng thông tin tra cứu, <strong>HOÀN TOÀN KHÔNG</strong> lưu trữ, cung cấp link xem trực tiếp hay phát tán phim vi phạm bản quyền.
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 PHIMMOI.net - Bài tập nhóm học phần Thiết kế &amp; Lập trình Web căn bản. Mọi thông tin dùng cho mục đích học tập.</p>
+        <p>Phát triển bằng HTML5, CSS3 và Vanilla JavaScript thuần.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================================================
+       CÁC TỆP JAVASCRIPT
+       ======================================================================== -->
+  <script src="js/movies-data.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/quiz.js"></script>
+</body>
+</html>

@@ -1,0 +1,227 @@
+/**
+ * ==============================================================================
+ * DỰ ÁN CỔNG THÔNG TIN ĐIỆN ẢNH - PHIMMOI.NET
+ * File: css/quiz.css
+ * Mô tả: Toàn bộ CSS chuyên biệt cho Trang Trắc nghiệm Phim (trac-nghiem.html):
+ *        - Thẻ câu hỏi (Quiz Card), thanh tiến trình (Progress Bar)
+ *        - Các nút lựa chọn câu trả lời (Option Cards / Pills)
+ *        - Khung kết quả phân tích sở thích & gợi ý 3 phim phù hợp
+ *        - Nút làm lại và chuyển đổi mượt mà
+ * ==============================================================================
+ */
+
+.quiz-wrapper {
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+/* Thẻ giới thiệu ban đầu */
+.quiz-intro-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 40px;
+  text-align: center;
+  box-shadow: var(--shadow-md);
+  margin-bottom: 30px;
+}
+
+.quiz-intro-icon {
+  font-size: 3.5rem;
+  margin-bottom: 16px;
+  display: inline-block;
+}
+
+.quiz-intro-card h1 {
+  font-size: 2.2rem;
+  margin-bottom: 12px;
+  color: var(--text-main);
+}
+
+.quiz-intro-card p {
+  font-size: 1.05rem;
+  color: var(--text-body);
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0 auto 24px;
+}
+
+/* Thanh tiến độ làm bài */
+.quiz-progress-wrapper {
+  margin-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.quiz-progress-text {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+.quiz-progress-bar {
+  width: 100%;
+  height: 8px;
+  background-color: var(--bg-secondary);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+}
+
+.quiz-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  width: 0%;
+  transition: width var(--transition-normal);
+  border-radius: var(--radius-full);
+}
+
+/* Thẻ chứa từng câu hỏi */
+.quiz-question-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 36px;
+  box-shadow: var(--shadow-md);
+  margin-bottom: 24px;
+}
+
+.quiz-question-title {
+  font-size: 1.35rem;
+  color: var(--text-main);
+  margin-bottom: 24px;
+  line-height: 1.4;
+}
+
+.quiz-options-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.quiz-option-btn {
+  background-color: var(--bg-secondary);
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 16px 20px;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 1rem;
+  color: var(--text-body);
+  transition: all var(--transition-fast);
+  line-height: 1.5;
+}
+
+.quiz-option-btn:hover {
+  background-color: var(--bg-card-hover);
+  border-color: var(--primary);
+  transform: translateX(6px);
+  color: var(--text-main);
+}
+
+.quiz-option-btn.is-selected {
+  background-color: rgba(229, 9, 20, 0.12);
+  border-color: var(--primary);
+  color: var(--text-main);
+  font-weight: 600;
+}
+
+.quiz-option-letter {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-full);
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 0.9rem;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.quiz-option-btn.is-selected .quiz-option-letter {
+  background-color: var(--primary);
+  color: #ffffff;
+  border-color: var(--primary);
+}
+
+/* KHUNG KẾT QUẢ ĐÁNH GIÁ */
+.quiz-result-card {
+  background-color: var(--bg-card);
+  border: 2px solid var(--accent);
+  border-radius: var(--radius-lg);
+  padding: 40px;
+  text-align: center;
+  box-shadow: var(--shadow-lg), 0 0 24px rgba(255, 184, 0, 0.2);
+  margin-bottom: 40px;
+}
+
+.quiz-result-header {
+  margin-bottom: 28px;
+}
+
+.quiz-result-genre-badge {
+  display: inline-block;
+  padding: 8px 24px;
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  color: #ffffff;
+  font-size: 1.4rem;
+  font-weight: 900;
+  border-radius: var(--radius-full);
+  margin-bottom: 16px;
+  box-shadow: var(--shadow-sm);
+}
+
+.quiz-result-desc {
+  font-size: 1.05rem;
+  color: var(--text-body);
+  line-height: 1.7;
+  max-width: 650px;
+  margin: 0 auto;
+}
+
+/* Lưới 3 phim đề xuất trong kết quả */
+.quiz-suggested-movies {
+  margin-top: 36px;
+  text-align: left;
+}
+
+.quiz-suggested-movies h3 {
+  font-size: 1.3rem;
+  margin-bottom: 18px;
+  text-align: center;
+  color: var(--text-main);
+}
+
+.quiz-suggested-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+/* Nút làm lại */
+.quiz-action-footer {
+  margin-top: 36px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+
+@media (max-width: 768px) {
+  .quiz-intro-card, .quiz-question-card, .quiz-result-card {
+    padding: 24px 18px;
+  }
+  .quiz-suggested-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}

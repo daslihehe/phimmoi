@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 600" width="400" height="600">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#33691e"/>
+      <stop offset="50%" stop-color="#689f38"/>
+      <stop offset="100%" stop-color="#1b3a0a"/>
+    </linearGradient>
+    <linearGradient id="darkOverlay" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#000000" stop-opacity="0.1"/>
+      <stop offset="60%" stop-color="#000000" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#0b0c10" stop-opacity="0.95"/>
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.8"/>
+    </filter>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="400" height="600" fill="url(#bgGrad)"/>
+
+  <!-- Geometric Abstract Visuals -->
+  <g opacity="0.15">
+    <circle cx="200" cy="220" r="140" fill="none" stroke="#FFFFFF" stroke-width="2"/>
+    <circle cx="200" cy="220" r="170" fill="none" stroke="#FFFFFF" stroke-width="1" stroke-dasharray="6 6"/>
+    <circle cx="200" cy="220" r="100" fill="none" stroke="#FFFFFF" stroke-width="1.5"/>
+    <line x1="50" y1="220" x2="350" y2="220" stroke="#FFFFFF" stroke-width="1" stroke-dasharray="4 4"/>
+    <line x1="200" y1="70" x2="200" y2="370" stroke="#FFFFFF" stroke-width="1" stroke-dasharray="4 4"/>
+  </g>
+
+  <!-- Top Badge: PHIMMOI.NET & Rating -->
+  <rect x="25" y="25" width="105" height="28" rx="6" fill="#141414" opacity="0.85"/>
+  <text x="77" y="44" font-family="'Segoe UI', Roboto, sans-serif" font-weight="700" font-size="12" fill="#E50914" text-anchor="middle">PHIMMOI.NET</text>
+
+  <rect x="285" y="25" width="90" height="28" rx="6" fill="#141414" opacity="0.9"/>
+  <text x="310" y="44" font-family="'Segoe UI', Roboto, sans-serif" font-weight="700" font-size="13" fill="#FFD700">★</text>
+  <text x="345" y="44" font-family="'Segoe UI', Roboto, sans-serif" font-weight="800" font-size="13" fill="#FFFFFF">7.5</text>
+
+  <!-- Center Film Icon Graphic -->
+  <g transform="translate(160, 160)" filter="url(#shadow)">
+    <rect x="0" y="0" width="80" height="80" rx="20" fill="#FFFFFF" fill-opacity="0.12" stroke="#FFFFFF" stroke-width="2" stroke-opacity="0.3"/>
+    <polygon points="32,24 56,40 32,56" fill="#FFD700"/>
+  </g>
+
+  <!-- Dark Gradient at Bottom -->
+  <rect width="400" height="600" fill="url(#darkOverlay)"/>
+
+  <!-- Tag / Badge -->
+  <rect x="30" y="420" width="120" height="24" rx="4" fill="#E50914"/>
+  <text x="90" y="436" font-family="'Segoe UI', Roboto, sans-serif" font-weight="700" font-size="11" fill="#FFFFFF" text-anchor="middle">SỬ THI</text>
+
+  <!-- Movie Title and Details -->
+  <text x="30" y="475" font-family="'Segoe UI', Roboto, sans-serif" font-weight="900" font-size="30" fill="#FFFFFF" filter="url(#shadow)">Đất Rừng Phương Nam</text>
+  <text x="30" y="505" font-family="'Segoe UI', Roboto, sans-serif" font-weight="500" font-size="16" fill="#FFD700">Song of the South</text>
+  <text x="30" y="535" font-family="'Segoe UI', Roboto, sans-serif" font-weight="400" font-size="13" fill="#E0E0E0">Thể loại: Phiêu lưu, Lịch sử</text>
+  
+  <line x1="30" y1="550" x2="370" y2="550" stroke="#FFFFFF" stroke-opacity="0.2" stroke-width="1"/>
+
+  <text x="30" y="575" font-family="'Segoe UI', Roboto, sans-serif" font-weight="600" font-size="12" fill="#AAAAAA">Năm: 2023</text>
+  <text x="370" y="575" font-family="'Segoe UI', Roboto, sans-serif" font-weight="600" font-size="12" fill="#E50914" text-anchor="end">CỔNG PHIM CHÍNH THỨC</text>
+</svg>

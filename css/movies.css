@@ -1,0 +1,470 @@
+/**
+ * ==============================================================================
+ * DỰ ÁN CỔNG THÔNG TIN ĐIỆN ẢNH - PHIMMOI.NET
+ * File: css/movies.css
+ * Mô tả: Toàn bộ CSS chuyên biệt cho:
+ *        - Trang Danh sách phim (danh-sach-phim.html): Thanh tìm kiếm,
+ *          bộ lọc đa tiêu chí, đếm kết quả, thông báo rỗng, khu Xem sau.
+ *        - Trang Chi tiết phim (chi-tiet-phim.html): Hero chi tiết,
+ *          thông tin đạo diễn/diễn viên, bảng dàn cast, widget chấm sao,
+ *          modal thông tin trailer, phim liên quan.
+ * ==============================================================================
+ */
+
+/* ==========================================================================
+   1. KHU VỰC TÌM KIẾM & BỘ LỌC ĐA TIÊU CHÍ (DANH SÁCH PHIM)
+   ========================================================================== */
+.filter-panel {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  margin-bottom: 30px;
+  box-shadow: var(--shadow-sm);
+}
+
+.search-box-wrapper {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 14px 20px 14px 48px;
+  background-color: var(--bg-input);
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-full);
+  color: var(--text-main);
+  font-size: 1.05rem;
+  transition: all var(--transition-fast);
+}
+
+.search-input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(229, 9, 20, 0.2);
+  outline: none;
+}
+
+.search-icon {
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.2rem;
+  color: var(--text-muted);
+  pointer-events: none;
+}
+
+.filter-controls-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr) auto;
+  gap: 16px;
+  align-items: flex-end;
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.filter-label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.filter-select {
+  padding: 10px 14px;
+  background-color: var(--bg-input);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  color: var(--text-main);
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: border-color var(--transition-fast);
+}
+
+.filter-select:focus {
+  border-color: var(--primary);
+  outline: none;
+}
+
+.filter-actions {
+  display: flex;
+  gap: 10px;
+}
+
+/* Thanh trạng thái kết quả */
+.results-status-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border-color);
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.results-count-text {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-body);
+}
+
+.results-count-number {
+  color: var(--primary);
+  font-weight: 800;
+}
+
+.view-mode-tabs {
+  display: flex;
+  gap: 8px;
+}
+
+.view-tab-btn {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+  padding: 6px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.view-tab-btn.is-active {
+  background-color: var(--primary);
+  color: #ffffff;
+  border-color: var(--primary);
+}
+
+/* Trạng thái không có kết quả (Empty State) */
+.empty-state-card {
+  text-align: center;
+  padding: 60px 20px;
+  background-color: var(--bg-card);
+  border: 1px dashed var(--border-color);
+  border-radius: var(--radius-lg);
+  grid-column: 1 / -1;
+}
+
+.empty-state__icon {
+  font-size: 3.5rem;
+  margin-bottom: 16px;
+  display: block;
+}
+
+.empty-state__title {
+  font-size: 1.4rem;
+  color: var(--text-main);
+  margin-bottom: 8px;
+}
+
+.empty-state__desc {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  max-width: 480px;
+  margin: 0 auto 20px;
+}
+
+/* ==========================================================================
+   2. TRANG CHI TIẾT PHIM (MOVIE DETAIL PAGE)
+   ========================================================================== */
+.movie-detail-hero {
+  position: relative;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  margin-bottom: 40px;
+  box-shadow: var(--shadow-md);
+}
+
+.detail-hero-layout {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 36px;
+  padding: 36px;
+}
+
+.detail-poster-col {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.detail-poster-img {
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--border-color);
+}
+
+.detail-action-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.detail-info-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.detail-title {
+  font-size: 2.4rem;
+  color: var(--text-main);
+  font-weight: 900;
+  margin-bottom: 6px;
+}
+
+.detail-original-title {
+  font-size: 1.15rem;
+  color: var(--accent);
+  font-weight: 500;
+  margin-bottom: 18px;
+}
+
+.detail-badges-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+
+.detail-score-box {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255, 184, 0, 0.12);
+  border: 1px solid rgba(255, 184, 0, 0.35);
+  padding: 6px 16px;
+  border-radius: var(--radius-full);
+}
+
+.detail-score-num {
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: var(--accent);
+}
+
+.detail-vote-count {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+/* Bảng thông số kỹ thuật phim */
+.detail-meta-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 24px;
+}
+
+.detail-meta-table td {
+  padding: 10px 0;
+  font-size: 0.95rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.detail-meta-table td.label-cell {
+  width: 140px;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.detail-meta-table td.value-cell {
+  color: var(--text-main);
+  font-weight: 500;
+}
+
+/* Phần tóm tắt nội dung */
+.detail-synopsis-box {
+  background-color: var(--bg-secondary);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  border-left: 4px solid var(--primary);
+  margin-bottom: 28px;
+}
+
+.detail-synopsis-box h3 {
+  font-size: 1.15rem;
+  margin-bottom: 8px;
+}
+
+.detail-synopsis-text {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--text-body);
+}
+
+/* ==========================================================================
+   3. WIDGET CHẤM SAO ĐÁNH GIÁ CỦA NGƯỜI DÙNG (USER STAR RATING)
+   ========================================================================== */
+.star-rating-widget {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  margin-bottom: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.star-rating-prompt h4 {
+  font-size: 1.05rem;
+  color: var(--text-main);
+  margin-bottom: 4px;
+}
+
+.star-rating-prompt p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.stars-interactive-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.star-btn {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #4b5563; /* Màu xám khi chưa sáng */
+  cursor: pointer;
+  padding: 0 3px;
+  line-height: 1;
+  transition: transform var(--transition-fast), color var(--transition-fast);
+}
+
+.star-btn:hover {
+  transform: scale(1.2);
+}
+
+.star-btn.is-active, .star-btn.is-hovered {
+  color: var(--accent);
+}
+
+.user-rating-feedback {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--accent);
+  min-width: 120px;
+  text-align: right;
+}
+
+/* ==========================================================================
+   4. BẢNG DÀN DIỄN VIÊN CHÍNH
+   ========================================================================== */
+.cast-section {
+  margin-bottom: 40px;
+}
+
+.cast-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.cast-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  text-align: center;
+}
+
+.cast-avatar-placeholder {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-full);
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 12px;
+}
+
+.cast-name {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.cast-role {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+/* ==========================================================================
+   5. PHIM CÙNG THỂ LOẠI (RELATED MOVIES)
+   ========================================================================== */
+.related-movies-section {
+  margin-top: 50px;
+  padding-top: 30px;
+  border-top: 1px solid var(--border-color);
+}
+
+/* ==========================================================================
+   6. RESPONSIVE MEDIA QUERIES
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .filter-controls-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .filter-actions {
+    grid-column: 1 / -1;
+  }
+  .detail-hero-layout {
+    grid-template-columns: 280px 1fr;
+    gap: 28px;
+    padding: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .filter-controls-grid {
+    grid-template-columns: 1fr;
+  }
+  .detail-hero-layout {
+    grid-template-columns: 1fr;
+  }
+  .detail-poster-col {
+    max-width: 260px;
+    margin: 0 auto;
+  }
+  .detail-title {
+    font-size: 1.8rem;
+    text-align: center;
+  }
+  .detail-original-title {
+    text-align: center;
+  }
+  .detail-badges-row {
+    justify-content: center;
+  }
+  .star-rating-widget {
+    flex-direction: column;
+    text-align: center;
+  }
+  .user-rating-feedback {
+    text-align: center;
+  }
+}

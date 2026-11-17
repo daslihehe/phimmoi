@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Danh Sách Phim - Tra Cứu & Bộ Lọc Điện Ảnh | PHIMMOI.net</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+
+  <!-- File CSS dùng chung và CSS chuyên biệt cho Phim -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/movies.css">
+</head>
+<body>
+
+  <!-- ========================================================================
+       HEADER & THANH ĐIỀU HƯỚNG (NAVBAR)
+       ======================================================================== -->
+  <header class="site-header">
+    <div class="container">
+      <nav class="navbar" aria-label="Thanh điều hướng chính">
+        <!-- Logo -->
+        <a href="index.html" class="navbar__brand" title="Trang chủ PHIMMOI.net">
+          <img src="images/logo.svg" alt="Logo PHIMMOI.net" class="navbar__logo-img">
+        </a>
+
+        <!-- Danh sách menu (Đánh dấu active trên Danh sách phim) -->
+        <ul class="navbar__menu">
+          <li><a href="index.html" class="navbar__link">Trang chủ</a></li>
+          <li><a href="danh-sach-phim.html" class="navbar__link active">Danh sách phim</a></li>
+          <li><a href="top-phim.html" class="navbar__link">Bảng xếp hạng</a></li>
+          <li><a href="trac-nghiem.html" class="navbar__link">Trắc nghiệm phim</a></li>
+          <li><a href="lien-he.html" class="navbar__link">Đề xuất phim</a></li>
+        </ul>
+
+        <!-- Hành động bên phải -->
+        <div class="navbar__actions">
+          <button type="button" class="theme-toggle-btn" aria-label="Chuyển đổi giao diện Sáng / Tối" title="Chuyển chế độ xem">&#9728;</button>
+          
+          <button type="button" class="watchlist-nav-btn" aria-label="Xem danh sách phim đã lưu">
+            <span>🔖</span>
+            <span class="label-text">Xem sau</span>
+            <span class="watchlist-count-badge">0</span>
+          </button>
+
+          <button type="button" class="hamburger-btn" aria-label="Mở menu di động" aria-expanded="false">&#9776;</button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ========================================================================
+       NỘI DUNG CHÍNH (MAIN)
+       ======================================================================== -->
+  <main class="container" style="padding-top: 36px; padding-bottom: 60px;">
+    
+    <!-- Tiêu đề cấp 1 duy nhất của trang -->
+    <div class="section-title">
+      <h1>Kho Phim Điện Ảnh Tuyển Chọn</h1>
+      <span class="section-title__sub">Khám phá, tra cứu và đánh giá 20 siêu phẩm điện ảnh chọn lọc</span>
+    </div>
+
+    <!-- BẢNG ĐIỀU KHIỂN BỘ LỌC & TÌM KIẾM ĐA TIÊU CHÍ -->
+    <section class="filter-panel" aria-label="Bộ lọc tìm kiếm phim">
+      
+      <!-- Ô tìm kiếm realtime -->
+      <div class="search-box-wrapper">
+        <span class="search-icon">🔍</span>
+        <input 
+          type="search" 
+          id="movieSearchInput" 
+          class="search-input" 
+          placeholder="Nhập tên phim, đạo diễn hoặc diễn viên để tìm kiếm tức thì..." 
+          aria-label="Tìm kiếm phim theo từ khóa"
+          autocomplete="off"
+        >
+      </div>
+
+      <!-- Lưới các tiêu chí lọc kết hợp -->
+      <div class="filter-controls-grid">
+        
+        <!-- Tiêu chí 1: Thể loại -->
+        <div class="filter-group">
+          <label for="filterGenreSelect" class="filter-label">Thể loại</label>
+          <select id="filterGenreSelect" class="filter-select">
+            <option value="Tất cả">Tất cả thể loại</option>
+            <option value="Hành động">Hành động</option>
+            <option value="Tâm lý">Tâm lý</option>
+            <option value="Tình cảm">Tình cảm</option>
+            <option value="Hài">Hài hước</option>
+            <option value="Kinh dị">Kinh dị</option>
+            <option value="Khoa học viễn tưởng">Khoa học viễn tưởng</option>
+            <option value="Hoạt hình">Hoạt hình</option>
+            <option value="Phiêu lưu">Phiêu lưu</option>
+            <option value="Gia đình">Gia đình</option>
+          </select>
+        </div>
+
+        <!-- Tiêu chí 2: Năm phát hành -->
+        <div class="filter-group">
+          <label for="filterYearSelect" class="filter-label">Năm phát hành</label>
+          <select id="filterYearSelect" class="filter-select">
+            <option value="all">Tất cả các năm</option>
+            <option value="2024">Năm 2024 mới nhất</option>
+            <option value="2023">Năm 2023</option>
+            <option value="2020-2022">Giai đoạn 2020 - 2022</option>
+            <option value="2010-2019">Thập niên 2010 - 2019</option>
+            <option value="before-2010">Kinh điển trước 2010</option>
+          </select>
+        </div>
+
+        <!-- Tiêu chí 3: Quốc gia -->
+        <div class="filter-group">
+          <label for="filterCountrySelect" class="filter-label">Quốc gia</label>
+          <select id="filterCountrySelect" class="filter-select">
+            <option value="Tất cả">Tất cả quốc gia</option>
+            <option value="Việt Nam">Việt Nam</option>
+            <option value="Mỹ">Mỹ (Hollywood)</option>
+            <option value="Hàn Quốc">Hàn Quốc</option>
+            <option value="Nhật Bản">Nhật Bản</option>
+          </select>
+        </div>
+
+        <!-- Tiêu chí 4: Sắp xếp -->
+        <div class="filter-group">
+          <label for="filterSortSelect" class="filter-label">Sắp xếp theo</label>
+          <select id="filterSortSelect" class="filter-select">
+            <option value="newest">Mới nhất (Năm giảm dần)</option>
+            <option value="rating-desc">Điểm đánh giá cao nhất</option>
+            <option value="title-asc">Tên phim (A &rarr; Z)</option>
+          </select>
+        </div>
+
+        <!-- Nút đặt lại -->
+        <div class="filter-actions">
+          <button type="button" id="btnResetFilters" class="btn btn--outline" style="height: 42px;">
+            <span>🔄</span> Đặt lại
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- THANH TRẠNG THÁI KẾT QUẢ & CHUYỂN TAB XEM SAU -->
+    <div class="results-status-bar">
+      <div id="resultsCountDisplay" class="results-count-text">
+        Hiển thị <span class="results-count-number">20</span> / 20 bộ phim
+      </div>
+
+      <!-- Tab chuyển giữa xem tất cả hoặc xem danh sách cá nhân đã lưu -->
+      <div class="view-mode-tabs" role="tablist">
+        <button type="button" class="view-tab-btn is-active" data-tab="all" role="tab" aria-selected="true">
+          🎬 Tất cả phim
+        </button>
+        <button type="button" class="view-tab-btn" data-tab="watchlist" role="tab" aria-selected="false">
+          🔖 Phim đã lưu (Xem sau)
+        </button>
+      </div>
+    </div>
+
+    <!-- LƯỚI CARD PHIM (HIỂN THỊ KẾT QUẢ HOẶC EMPTY STATE) -->
+    <section class="movies-grid" id="moviesListGrid" aria-label="Danh sách kết quả phim">
+      <!-- Bơm động hoàn toàn bằng JavaScript qua js/search-filter.js -->
+    </section>
+
+  </main>
+
+  <!-- ========================================================================
+       MODAL: DANH SÁCH "XEM SAU" (DÙNG CHUNG)
+       ======================================================================== -->
+  <div class="modal-backdrop" id="watchlistModal" role="dialog" aria-modal="true" aria-labelledby="watchlistModalTitle">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h3 class="modal-title" id="watchlistModalTitle">🔖 Phim Đã Lưu (Xem Sau)</h3>
+        <button type="button" class="modal-close-btn" aria-label="Đóng cửa sổ">&times;</button>
+      </div>
+      <div class="modal-body">
+        <!-- Render nội dung từ main.js -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn--outline modal-close-btn">Đóng</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Nút cuộn lên đầu trang -->
+  <button type="button" class="scroll-top-btn" aria-label="Cuộn lên đầu trang" title="Lên đầu trang">&#8679;</button>
+
+  <!-- ========================================================================
+       FOOTER (CHÂN TRANG)
+       ======================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="images/logo.svg" alt="PHIMMOI.net" class="footer-brand__logo">
+          <p class="footer-brand__desc">
+            Cổng thông tin điện ảnh độc lập, phi lợi nhuận. Cung cấp dữ liệu, tóm tắt nội dung, phân loại và đánh giá phim khách quan dành cho cộng đồng yêu nghệ thuật thứ bảy tại Việt Nam.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-col__title">Khám Phá</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Trang chủ</a></li>
+            <li><a href="danh-sach-phim.html">Danh sách phim</a></li>
+            <li><a href="top-phim.html">Bảng xếp hạng Top</a></li>
+            <li><a href="trac-nghiem.html">Trắc nghiệm sở thích</a></li>
+            <li><a href="lien-he.html">Đề xuất phim mới</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-col__title">Thể Loại Hot</h4>
+          <ul class="footer-links">
+            <li><a href="danh-sach-phim.html?genre=Hành động">Phim Hành Động</a></li>
+            <li><a href="danh-sach-phim.html?genre=Tâm lý">Phim Tâm Lý Xã Hội</a></li>
+            <li><a href="danh-sach-phim.html?genre=Tình cảm">Phim Tình Cảm Lãng Mạn</a></li>
+            <li><a href="danh-sach-phim.html?genre=Khoa học viễn tưởng">Khoa Học Viễn Tưởng</a></li>
+            <li><a href="danh-sach-phim.html?genre=Hoạt hình">Phim Hoạt Hình Tuyển Chọn</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-col__title">Tuyên Bố Pháp Lý</h4>
+          <div class="footer-disclaimer">
+            <strong>LƯU Ý QUAN TRỌNG:</strong> Website là bài tập lớn học phần Thiết kế Web căn bản. Đây là cổng thông tin tra cứu, <strong>HOÀN TOÀN KHÔNG</strong> lưu trữ, cung cấp link xem trực tiếp hay phát tán phim vi phạm bản quyền.
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 PHIMMOI.net - Bài tập nhóm học phần Thiết kế &amp; Lập trình Web căn bản. Mọi thông tin dùng cho mục đích học tập.</p>
+        <p>Phát triển bằng HTML5, CSS3 và Vanilla JavaScript thuần.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================================================
+       CÁC TỆP JAVASCRIPT
+       ======================================================================== -->
+  <script src="js/movies-data.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/search-filter.js"></script>
+</body>
+</html>
